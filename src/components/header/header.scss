@@ -1,0 +1,52 @@
+@import "../../mixins.scss";
+
+.search-input-header {
+  width: 400px;
+  background-color: transparent;
+  color: var(--text-dark-white);
+  outline: 0;
+  border: 0;
+  animation: mobileSearchFade 0.3s ease-in-out forwards;
+  color: var(--text-dark-white);
+  display: none;
+  @include lg {
+    display: block;
+  }
+}
+
+.search-input-header:focus {
+  outline: 0;
+  border: 0;
+}
+.search-input-header::placeholder {
+}
+.search-input-header-div {
+  border-radius: 30px;
+  padding: 10px 10px;
+  background-color: var(--input-dark-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  @include lg {
+    padding: 10px 16px;
+  }
+}
+.button {
+  padding: 10px 10px;
+  // background-color: #8ec5fc;
+  // background-image: linear-gradient(62deg, #8ec5fc 0%, #b5a1e5 100%);
+  background-color: #b5a1e5;
+  border-radius: 30px;
+  color: var(--text-dark-black);
+  @include lg {
+    padding: 10px 16px;
+  }
+  .button-text {
+    display: none;
+    @include lg {
+      display: block;
+    }
+  }
+}
+.right-container {
+  display: flex;
+  align-items: center;
+}

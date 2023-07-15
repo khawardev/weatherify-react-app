@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  font-family: "Inter", sans-serif;
+  --tw-bg-opacity: 1;
+  --text-dark-white: white;
+  --text-dark-black: rgb(0, 0, 0);
+  --background-dark: rgb(16 16 16 / var(--tw-bg-opacity));
+  --input-dark-color: rgba(81, 81, 81, 0.181);
+  --input-darker-color: rgba(0, 0, 0, 0.181);
+  --button-color: #b5a1e5;
+  --background-light: whitesmoke;
+  --font-input-size: 1rem;
+  --input-div-padding: 10px 16px;
+  --button-padding: 8px 9px;
+  --all-text-color: rgb(148 163 184 );
+  background-color: var(--background-dark);
+}
+.btn-color{
+  background-color: #b5a1e5;
+}
+.btn-text-color{
+  color: #b5a1e5;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  --tw-text-opacity: 1;
+  color: var(--all-text-color);
+
+}
+.sidebar {
+  background-color: var(--input-dark-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+}
+.sidebar-darker {
+  background-color: var(--input-darker-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+}
