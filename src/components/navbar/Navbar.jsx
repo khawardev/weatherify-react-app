@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
-import './header.scss'
+import './navbar.scss'
 import { FiSearch } from 'react-icons/fi';
 import { TbCurrentLocation } from 'react-icons/tb';
-const Header = () => {
+const Navbar = () => {
 
     const Weathersvg =
         <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" width="45" height="45">
@@ -61,4 +61,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Navbar

@@ -1,6 +1,6 @@
 
 import './App.css'
-import Header from './components/Header/Header'
+import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/Current/Current'
 import Forcast from './components/forcast/Forcast';
 import Highlights from './components/highlights/Highlights';
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className=' w-11/12 mx-auto md:flex   gap-5 '>
         <div className='md:w-1/2'>
           <Sidebar />
