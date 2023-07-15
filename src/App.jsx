@@ -1,6 +1,6 @@
 
 import './App.css'
-import Header from './components/header/header'
+import Header from './components/Header/header'
 import Sidebar from './components/Current/Current'
 import Forcast from './components/forcast/Forcast';
 import Highlights from './components/highlights/Highlights';
