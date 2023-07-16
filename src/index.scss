@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./mixins.scss";
+
 :root {
   font-family: "Inter", sans-serif;
   --tw-bg-opacity: 1;
@@ -16,6 +18,12 @@
   --button-padding: 8px 9px;
   --all-text-color: rgb(148 163 184);
   background-color: var(--background-dark);
+
+  // --background-dark: #131215;
+  // --input-dark-color: #1C1C1E;
+  // --input-darker-color: #1A191C;
+  // --button-color: #b5a1e5;
+  // --all-text-color: #6E6E70;
 }
 .btn-color {
   background-color: #b5a1e5;
@@ -42,6 +50,14 @@ body {
   // -webkit-backdrop-filter: blur(10px);
   // backdrop-filter: blur(10px);
   // border: 1px solid rgba(255,255,255,0.175);
+}
+.highlights-sidebar {
+  @include md {
+    background-color: var(--input-dark-color);
+    box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }
 .sidebar-darker {
   background-color: var(--input-darker-color);

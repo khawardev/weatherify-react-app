@@ -15,7 +15,7 @@ function App() {
           <Sidebar />
         </div>
         <div className='md:w-1/2'>
-          <Forcast />
+          <Forcast text={'6 Days Forcast'} classes={'grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4'} />
         </div>
       </div>
       <Highlights />
