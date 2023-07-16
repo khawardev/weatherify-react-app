@@ -4,8 +4,7 @@ import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/Current/Current'
 import Forcast from './components/forcast/Forcast';
 import Highlights from './components/highlights/Highlights';
-
-
+import Day from './components/day/day';
 
 function App() {
 
@@ -21,6 +20,7 @@ function App() {
         </div>
       </div>
       <Highlights />
+      <Day/>
     </>
   )
 }
