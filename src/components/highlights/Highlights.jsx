@@ -1,7 +1,7 @@
 // import { CiTempHigh } from 'react-icons/ci';
 // import { FaEyeLowVision } from 'react-icons/fa6';
 import { TbWind } from 'react-icons/tb';
-import Airqualitycard from './airqualitycard/Airqualitycard';
+import QualityAirCard from './airQualityCard/QualityAirCard';
 import HumPressuresCard from './humPresCard/HumPressuresCard';
 import TimeRiseCard from './riseTimeCard/TimeRiseCard';
 import FeelsLikeVis from './visFeellike/FeelsLikeVis';
@@ -32,10 +32,10 @@ const Highlights = () => {
                                     </div>
                                 </div>
                                 <div className=" grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-10 py-8 items-center">
-                                    <Airqualitycard Text={'PM225'} Number={'177'} />
-                                    <Airqualitycard Text={'SO2'} Number={'29.8'} />
-                                    <Airqualitycard Text={'NO2'} Number={'43.8'} />
-                                    <Airqualitycard Text={'O3'} Number={'0.15'} />
+                                    <QualityAirCard Text={'PM225'} Number={'177'} />
+                                    <QualityAirCard Text={'SO2'} Number={'29.8'} />
+                                    <QualityAirCard Text={'NO2'} Number={'43.8'} />
+                                    <QualityAirCard Text={'O3'} Number={'0.15'} />
                                 </div>
                             </div>
                         </div>

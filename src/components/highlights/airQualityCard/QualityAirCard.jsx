@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Airqualitycard = ({ Text, Number }) => {
+const QualityAircard = ({ Text, Number }) => {
     return (
         <>
             <div className='text-center'>
@@ -14,4 +14,4 @@ const Airqualitycard = ({ Text, Number }) => {
     )
 }
 
-export default Airqualitycard
+export default QualityAircard
