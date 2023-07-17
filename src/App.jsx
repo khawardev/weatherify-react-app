@@ -1,26 +1,42 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 
 import './App.css'
 import Navbar from './components/navbar/Navbar'
-import Sidebar from './components/Current/Current'
-import Forcast from './components/forcast/Forcast';
+
 import Highlights from './components/highlights/Highlights';
 import DayForcast from './components/dayForcast/DayForcast';
+import { useEffect, useState } from 'react';
+import useFetch from './hook/UseFetch';
+
+import ForcastCurrent from './components/forcastCurrent/ForcastCurrent';
+import { Context } from './context/Contextapi';
+import { useContext } from 'react';
+
+
+
 function App() {
+
+
+  // http://api.weatherapi.com/v1/astronomy.json?key=a06be27671514c478d0102205231207&q=paris&dt=2023-07-17
+  // http://api.weatherapi.com/v1/astronomy.json?key=a06be27671514c478d0102205231207&q=paris&aqi=yes&dt=2023-07-17
+  // console.log("🚀 ~ file: App.jsx:25 ~ App ~ Endpoint:", DateEndpoint)
+  const { DateEndpoint, setDateEndpoint } = useContext(Context);
+  const { data, error } = useFetch(`uk`, { DateEndpoint });
+  
+
+
 
   return (
     <>
+
       <Navbar />
-      <div className=' w-11/12 mx-auto md:flex   gap-5 '>
-        <div className='md:w-1/2'>
-          <Sidebar />
-        </div>
-        <div className='md:w-1/2'>
-          <Forcast text={'6 Days Forcast'} classes={'grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4'} />
-        </div>
-      </div>
-      <Highlights />
-      <DayForcast/>
+      <ForcastCurrent data={data} />
+      <Highlights data={data} />
+      <DayForcast />
+
     </>
+
   )
 }
 

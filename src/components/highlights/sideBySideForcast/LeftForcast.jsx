@@ -1,7 +1,17 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import { TbWind } from 'react-icons/tb';
 import QualityAirCard from '../airQualityCard/QualityAirCard';
 import HumPressuresCard from '../humPresCard/HumPressuresCard';
-const LeftForcast = () => {
+
+
+const LeftForcast = ({ data }) => {
+   
+    const airQualityData = data?.current?.air_quality;
+    const firstFourElements = airQualityData ? Object.entries(airQualityData).slice(0, 3) : [];
+
+
     return (
         <>
             <div className='w-full sm:my-10 my-5'>
@@ -20,9 +30,17 @@ const LeftForcast = () => {
                         </div>
                         <div className=" grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-10 py-8 items-center">
                             <QualityAirCard Text={'PM225'} Number={'177'} />
-                            <QualityAirCard Text={'SO2'} Number={'29.8'} />
+                            {/* <QualityAirCard Text={'SO2'} Number={'29.8'} />
                             <QualityAirCard Text={'NO2'} Number={'43.8'} />
-                            <QualityAirCard Text={'O3'} Number={'0.15'} />
+                            <QualityAirCard Text={'O3'} Number={'0.15'} /> */}
+
+                            {
+                                firstFourElements.map(([key, value]) => (
+                                    <div key={key}>
+                                        <QualityAirCard Text={key.toUpperCase()} Number={value.toFixed(1)} />
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
