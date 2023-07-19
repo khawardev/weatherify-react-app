@@ -10,6 +10,7 @@ const QualityAircard = ({ Text, Number }) => {
                 </div>
             </div>
 
+
         </>
     )
 }

@@ -2,7 +2,7 @@
 import LeftForcast from './sideBySideForcast/LeftForcast';
 import RightForcast from './sideBySideForcast/RightForcast';
 
-const Highlights = ({data}) => {
+const Highlights = ({data,astronomyData}) => {
     return (
         <>
             <div className="w-11/12 mx-auto my-10 ">
@@ -10,7 +10,7 @@ const Highlights = ({data}) => {
                 <div className="xl:flex flex-none gap-5 highlights-sidebar rounded-2xl   py-1 md:px-10 ">
 
                     <LeftForcast data={data} />
-                    <RightForcast />
+                    <RightForcast data={data} astronomyData={astronomyData} />
 
                 </div>
             </div>

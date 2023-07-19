@@ -1,42 +1,35 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import './current.scss'
-import { useState, useEffect,useContext } from 'react';
 import { BsFillCalendarEventFill } from 'react-icons/bs';
 import { FaLocationDot } from 'react-icons/fa6';
 import { WiCloud } from 'react-icons/wi';
 import { BiSolidTimeFive } from 'react-icons/bi';
 import { WiDaySunny } from 'react-icons/wi';
 import useFetch from '../../hook/UseFetch';
-import { Context } from '../../context/Contextapi';
-const Current = ({ data }) => {
+import { useState, useEffect, useContext } from 'react';
+import { Context } from '../../context/AppContext';
+const Current = ({ data,formattedTime }) => {
 
-    const {DateEndpoint, setDateEndpoint} = useContext(Context);
 
-    const datetime = data?.location?.localtime.split(' ')[1];
-    const dateStr = data?.location?.localtime.split(' ')[0];
-    { dateStr ? setDateEndpoint(dateStr) : '' }
 
-    // date, month year
-    const date = new Date(dateStr);
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
+    const { DateEndpoint, setDateEndpoint } = useContext(Context);
+    const { utcEpoch, setutcEpoch } = useContext(Context);
+    const { localDate, setlocalDate } = useContext(Context);
+    const { dayName, setdayName } = useContext(Context);
+    const { formattedDate, setformattedDate } = useContext(Context);
+    const { modifiedTime, setmodifiedTime } = useContext(Context);
+    // console.log("🚀 ~ file: Current.jsx:23 ~ Current ~ modifiedTime:", modifiedTime)
 
-    // Day
-    const currentDate = new Date();
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const currentDay = weekdays[currentDate.getDay()];
 
-    // Am or Pm
-    const [isPm, setisPm] = useState("");
 
     useEffect(() => {
-        if (datetime) {
-            const hour = parseInt(datetime.split(':')[0]);
-            const isPM = hour >= 12;
-            setisPm(isPM ? " pm" : " am");
-        }
-    }, [datetime]);
+        setutcEpoch(data?.location?.localtime_epoch);
+        setDateEndpoint(data && localDate)
+    }, [data,localDate]);
+
+
 
 
 
@@ -53,7 +46,7 @@ const Current = ({ data }) => {
                     <div className='flex items-center justify-between '>
                         <div>
                             <p className="text-white font-semibold sm:text-6xl text-5xl ">
-                                {data === null ? 'loading...' : `${data?.current?.temp_c}°C`}
+                                {data ? `${data?.current?.temp_c}°C` : 'loading...'}
                             </p>
                         </div>
                         <div className='text-white sm:text-9xl text-8xl  '>
@@ -62,16 +55,17 @@ const Current = ({ data }) => {
 
                     </div>
 
-                    <p className='font-semibold'>{data === null ? 'loading...' : `${data?.current?.condition?.text}`}</p>
+                    <p className='font-semibold'>{data ? `${data?.current?.condition?.text}` : 'loading...'}</p>
 
                     <hr className=" border-slate-400 my-5" />
 
-                    <div className='flex gap-3 items-center mb-4'>
+                    <div className='flex gap-2 items-center mb-4'>
                         <div className='text-white '>
                             <BiSolidTimeFive size={20} />
                         </div>
                         <div>
-                            {data?.location?.localtime.split(' ')[1]}{isPm}
+                            {data ? `${formattedTime}` : 'loading...'}
+
                         </div>
 
                     </div>
@@ -80,7 +74,7 @@ const Current = ({ data }) => {
                             <BsFillCalendarEventFill size={16} />
                         </div>
                         <div>
-                            {data === null ? 'loading...' : ` ${currentDay} - ${formattedDate}`}
+                            {data ? ` ${dayName} - ${formattedDate}` : 'loading...'}
                         </div>
 
                     </div>
@@ -89,7 +83,7 @@ const Current = ({ data }) => {
                             <FaLocationDot size={18} />
                         </div>
                         <div>
-                            {data === null ? 'loading...' : `${data?.location?.name}, ${data?.location?.country}`}
+                            {data ? `${data?.location?.name}, ${data?.location?.country}` : 'loading...'}
                         </div>
 
                     </div>

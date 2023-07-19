@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import { BsSun, BsMoon } from 'react-icons/bs';
 import React from 'react'
-const TimeRiseCard = ({ Day, Time, Zone, Icon }) => {
+const TimeRiseCard = ({ Day, Time, Icon }) => {
     const UsedIcon = Icon ? BsSun : BsMoon;
     const icon = <UsedIcon />;
     return (
@@ -16,7 +16,7 @@ const TimeRiseCard = ({ Day, Time, Zone, Icon }) => {
                 <div>
                     <p className='font-semibold '>{Day}</p>
                     <div className='sm:text-4xl text-3xl font-semibold text-white'>
-                        {Time} {Zone}
+                        {Time}
                     </div>
                 </div>
             </div>

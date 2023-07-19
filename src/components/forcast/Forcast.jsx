@@ -1,15 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Forcastcards from './forcastcards/Forcastcards';
-const Forcast = ({ classes, text, AvailaibleToday }) => {
+const Forcast = ({ classes, text, AvailaibleToday, ForcastData}) => {
     const rotationAngles = Array.from({ length: 8 }, (_, index) => index * 45);
-
-    const colorclass = ' bg-cyan-700 rounded-full w-3/5 mx-auto text-white '
+    const colorclass = 'rounded-full w-3/5 mx-auto text-white '
     return (
         <div >
             <div className=' my-5 '>
                 <p className=' text-white  px-1 text-xl font-semibold mb-5'>{text}</p>
                 <div className={classes} >
-
                     {AvailaibleToday ? (
                         <>
                             {rotationAngles.map((index) => (
@@ -19,12 +18,13 @@ const Forcast = ({ classes, text, AvailaibleToday }) => {
                         </>
                     ) :
                         <>
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
-                            <Forcastcards Iconparams={'cloud'} colorclass={colorclass} />
+                            {ForcastData && (
+                                <>
+                                    <Forcastcards Iconparams={'cloud'} colorclass={colorclass} ForcastData={ForcastData}  />
+
+                                </>
+                            )}
+
                         </>
                     }
 
@@ -38,7 +38,7 @@ const Forcast = ({ classes, text, AvailaibleToday }) => {
                     <div className=' my-5 '>
                         <div className={classes} >
                             {rotationAngles.map((index) => (
-                                <Forcastcards Style={{ transform: `rotate(${index}deg)`, color:'#2298F1' }} key={index} colorclass='text-white' Iconparams={'Location'} LocationIconclasses={'my-8  flex justify-center text-4xl'} />
+                                <Forcastcards Style={{ transform: `rotate(${index}deg)`, color: '#2298F1' }} key={index} colorclass='text-white' Iconparams={'Location'} LocationIconclasses={'my-8  flex justify-center text-4xl'} />
                             ))}
                         </div>
                     </div>

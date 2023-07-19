@@ -20,7 +20,7 @@ const HumpressuresCard = ({ Text, Icon, Number,power }) => {
                         {icon}
                     </div>
                     <div className='sm:text-4xl text-3xl font-semibold'>
-                        {Number} <span className=' text-2xl '>{power}</span>
+                        {Number} <span className=' sm:text-3xl text-2xl '>{power}</span>
                     </div>
                 </div>
             </div>
