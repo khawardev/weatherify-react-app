@@ -7,23 +7,36 @@ import { useState } from "react"
 export const Context = createContext();
 
 const AppContext = ({ children }) => {
-    const [DateEndpoint, setDateEndpoint] = useState();
+
+
+    const [lat, setlat] = useState();
+    const [lon, setlon] = useState();
+
+
+   
     const [utcEpoch, setutcEpoch] = useState();
+    const [DateEndpoint, setDateEndpoint] = useState();
     const [localDate, setlocalDate] = useState();
-    const [localTime, setlocalTime] = useState();
     const [formattedDate, setformattedDate] = useState();
     const [dayName, setdayName] = useState();
-    const [modifiedTime, setmodifiedTime] = useState();
+
+    // Realtime Time Data
+    const [TimeZone, setTimeZone] = useState();
+    const [Timedata, setTimedata] = useState();
+    // Realtime Time Data
+
+
+
+
 
     useEffect(() => {
         setlocalDate(convertUTCEpochToLocalDate(utcEpoch));
         setdayName(getDayNameFromUTCEpoch(utcEpoch));
-        setlocalTime(extractLocalTimeFromUTCEpoch(utcEpoch))
         setformattedDate(convertLocalDateToCustomFormat(localDate));
+        TimeZone && setTimedata(new Date()?.toLocaleString("en-US", { timeZone: `${TimeZone}`, timeStyle: 'short', hourCycle: 'h12' }))
 
-        localTime && setmodifiedTime(modifyTimeWithAMPM(localTime));
+    }, [utcEpoch, localDate,TimeZone]);
 
-    }, [utcEpoch, localDate, localTime]);
 
 
     function convertUTCEpochToLocalDate(utcEpoch) {
@@ -48,26 +61,6 @@ const AppContext = ({ children }) => {
         const dayName = daysOfWeek[dayOfWeekIndex];
         return dayName;
     }
-    function extractLocalTimeFromUTCEpoch(utcEpoch) {
-        const date = new Date(utcEpoch * 1000);
-        const localHours = date.getHours();
-        const localMinutes = date.getMinutes();
-        const localTime = `${String(localHours).padStart(2, '0')}:${String(localMinutes).padStart(2, '0')}`;
-        return localTime;
-    }
-
-    function modifyTimeWithAMPM(localTime) {
-
-        const [hours, minutes] = localTime.split(':');
-        const numericHours = parseInt(hours);
-        const period = numericHours >= 12 ? 'PM' : 'AM';
-        const modifiedHours = numericHours % 12 || 12;
-        const modifiedTime = `${modifiedHours}:${minutes} ${period}`;
-        return modifiedTime;
-    }
-
-
-
 
 
 
@@ -81,8 +74,11 @@ const AppContext = ({ children }) => {
                 utcEpoch, setutcEpoch,
                 formattedDate, setformattedDate,
                 dayName, setdayName,
-                modifiedTime, setmodifiedTime,
                 localDate, setlocalDate,
+                Timedata, setTimedata,
+                TimeZone, setTimeZone,
+                lat, setlat,
+                lon, setlon
             }}>
             {children}
         </Context.Provider>

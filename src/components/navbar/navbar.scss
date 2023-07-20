@@ -36,6 +36,8 @@
   background-color: #b5a1e5;
   border-radius: 30px;
   color: var(--text-dark-black);
+ transition: 0.3s;
+
   @include lg {
     padding: 10px 16px;
   }
@@ -46,7 +48,38 @@
     }
   }
 }
+.button:hover {
+  background-color: #a491d1;
+ transition: 0.3s;
+}
 .right-container {
   display: flex;
   align-items: center;
+}
+
+.pulse-bubble {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+
+.pulse-bubble-1 {
+  animation: pulse 0.4s ease 0s infinite alternate;
+}
+.pulse-bubble-2 {
+  animation: pulse 0.4s ease 0.2s infinite alternate;
+}
+.pulse-bubble-3 {
+  animation: pulse 0.4s ease 0.4s infinite alternate;
+}
+@keyframes pulse {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
 }

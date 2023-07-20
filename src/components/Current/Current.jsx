@@ -10,7 +10,7 @@ import { WiDaySunny } from 'react-icons/wi';
 import useFetch from '../../hook/UseFetch';
 import { useState, useEffect, useContext } from 'react';
 import { Context } from '../../context/AppContext';
-const Current = ({ data,formattedTime }) => {
+const Current = ({ data }) => {
 
 
 
@@ -19,8 +19,7 @@ const Current = ({ data,formattedTime }) => {
     const { localDate, setlocalDate } = useContext(Context);
     const { dayName, setdayName } = useContext(Context);
     const { formattedDate, setformattedDate } = useContext(Context);
-    const { modifiedTime, setmodifiedTime } = useContext(Context);
-    // console.log("🚀 ~ file: Current.jsx:23 ~ Current ~ modifiedTime:", modifiedTime)
+    const { Timedata, setTimedata } = useContext(Context);
 
 
 
@@ -64,7 +63,7 @@ const Current = ({ data,formattedTime }) => {
                             <BiSolidTimeFive size={20} />
                         </div>
                         <div>
-                            {data ? `${formattedTime}` : 'loading...'}
+                            {data ? `${Timedata}` : 'loading...'}
 
                         </div>
 

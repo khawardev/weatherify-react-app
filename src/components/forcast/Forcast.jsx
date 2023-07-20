@@ -20,7 +20,7 @@ const Forcast = ({ classes, text, AvailaibleToday, ForcastData}) => {
                         <>
                             {ForcastData && (
                                 <>
-                                    <Forcastcards Iconparams={'cloud'} colorclass={colorclass} ForcastData={ForcastData}  />
+                                    <Forcastcards Iconparams={'cloud'} colorclass={colorclass} ForcastData={ForcastData}   />
 
                                 </>
                             )}

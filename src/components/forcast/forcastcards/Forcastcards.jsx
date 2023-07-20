@@ -8,11 +8,11 @@ import { FaLocationArrow } from 'react-icons/fa';
 import { useState } from 'react';
 import { useEffect, useContext } from 'react';
 import { Context } from '../../../context/AppContext';
-const Forcastcards = ({ colorclass, Iconparams, LocationIconclasses, Style, index, ForcastData}) => {
+const Forcastcards = ({ colorclass, Iconparams, LocationIconclasses, Style, index, ForcastData }) => {
     const LocationIcon = Style && FaLocationArrow;
     const DaysIcon = index < 90 || index > 225 ? HiMoon : WiMoonFull;
     const ForcastIcon = Iconparams === 'cloud' ? WiCloud : DaysIcon;
-    const Defaultclasses = 'my-3 flex justify-center text-8xl'
+    const Defaultclasses = 'my-2  flex justify-center text-8xl'
     const UsedClasses = LocationIconclasses ? LocationIconclasses : Defaultclasses;
 
     const [dateEpochs, setDateEpochs] = useState([]);
@@ -49,10 +49,15 @@ const Forcastcards = ({ colorclass, Iconparams, LocationIconclasses, Style, inde
                             )
                         )}
                     </div>
+                    <p className='w-full mb-1' style={{ fontSize: '14px' }}>
+                        {ForcastData?.day?.condition?.text?.split(' ').slice(0, 2).join(' ')}
+                    </p>
                     <p className={colorclass} style={{ fontSize: '14px' }}>
                         {ForcastData?.day?.avgtemp_c.toFixed(0)}°C
                     </p>
                 </div>
+
+
             ))}
 
 

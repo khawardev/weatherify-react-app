@@ -20,52 +20,19 @@ import { useContext } from 'react';
 function App() {
 
   const { DateEndpoint, setDateEndpoint } = useContext(Context);
-  const { data, error } = useFetch(`paris`, { DateEndpoint });
+  const { TimeZone, setTimeZone } = useContext(Context);
+  
+  const { lat, setlat } = useContext(Context);
+  const { lon, setlon } = useContext(Context);
+  
+  const { data, error } = useFetch(`Mamu Kanjan`, DateEndpoint , lat , lon );
 
-  // console.log("🚀 ~ file: App.jsx:26 ~ App ~ data:", data?.currentResponseData?.location?.lat)
-
-  const [currentTime, setCurrentTime] = useState();
-  const [formattedTime, setFormattedTime] = useState();
-  const [formattedDate, setFormattedDate] = useState();
 
   useEffect(() => {
-    data && getTimeByLatLong();
-  }, [data]);
-
-  const getTimeByLatLong = () => {
-    fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=FD18KT7T2N5C&format=json&by=position&lat=${data?.currentResponseData?.location?.lat}&lng=${data?.currentResponseData?.location?.lon}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCurrentTime(data);
-        const dateTimeString = data?.formatted;
-        const [dateString, timeString] = dateTimeString.split(' ');
-        const [year, month, day] = dateString.split('-');
-        const [hours, minutes, seconds] = timeString.split(':');
-
-        const formattedTime = new Date(0, 0, 0, hours, minutes, seconds).toLocaleString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        });
-
-
-        const formattedDate = new Date(year, month - 1, day).toLocaleDateString('en-US', {
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric'
-        });
-
-        setFormattedTime(formattedTime);
-        setFormattedDate(formattedDate);
-      })
-      .catch((error) => {
-        console.error('Error retrieving time:', error);
-      });
-  };
-
-  // console.log(formattedTime);
-  // console.log(formattedDate);
-
+    data && setTimeZone(data?.currentResponseData?.location?.tz_id)
+    setlat(lat)
+    setlon(lon)
+  }, [data,lon,lat]);
 
 
 
@@ -74,7 +41,7 @@ function App() {
     <>
 
       <Navbar />
-      <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} formattedTime={formattedTime} />
+      <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} />
       <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
       <DayForcast />
 

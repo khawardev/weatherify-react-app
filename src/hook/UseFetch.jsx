@@ -3,7 +3,8 @@ import { useEffect, useState} from "react";
 import { fetchDataFromApi } from "../utils/api"
 
 // console.log("🚀 ~ file: UseFetch.jsx:4 ~ useFetch ~ location:", location)
-const useFetch = (location,DateEndpoint) => {
+const useFetch = (location,DateEndpoint, lat , lon ) => {
+
     
     const [data, setData] = useState(null);
     // const [loading, setLoading] = useState(null);
@@ -14,7 +15,7 @@ const useFetch = (location,DateEndpoint) => {
         setData(null);
         setError(null);
 
-        fetchDataFromApi(location,DateEndpoint)
+        fetchDataFromApi(location,DateEndpoint,lat,lon )
             .then((res) => {
                 // setLoading(false);
                 setData(res);
@@ -23,7 +24,8 @@ const useFetch = (location,DateEndpoint) => {
                 // setLoading(false);
                 setError("Something went wrong!", error);
             });
-    }, [location]);
+    }, [location,lat,lon]);
+    console.log("🚀 ~ file: UseFetch.jsx:28 ~ useFetch ~ location:", location)
 
 
 

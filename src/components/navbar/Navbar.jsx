@@ -1,8 +1,39 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import './navbar.scss'
 import { FiSearch } from 'react-icons/fi';
 import { TbCurrentLocation } from 'react-icons/tb';
+
+import { useEffect, useContext, useState } from 'react';
+import { Context } from '../../context/AppContext';
+
 const Navbar = () => {
+
+    const { lat, setlat } = useContext(Context);
+    const { lon, setlon } = useContext(Context);
+
+    const { DateEndpoint, setDateEndpoint } = useContext(Context);
+    const [isget, Setisget] = useState(false)
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            Setisget(true)
+
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        setlat(position.coords.latitude);
+        setlon(position.coords.longitude);
+    }
+    useEffect(() => {
+        Setisget(false)
+    }, [DateEndpoint]);
+
 
     const Weathersvg =
         <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" viewBox="0 0 24 24" width="45" height="45">
@@ -10,19 +41,14 @@ const Navbar = () => {
 	             c2.4,0,4.3-1.9,4.3-4.3C22.5,12.8,21.3,11.1,19.5,10.5z" fill="#ffffff"></path>
         </svg>
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
 
-    function showPosition(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        console.log("Latitude: " + latitude + "\nLongitude: " + longitude);
-    }
+
+
+
+
+
+
+
 
     return (
         <>
@@ -52,7 +78,17 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div>
-                        <button onClick={getLocation} className='button flex   items-center gap-3  tracking-tight font-medium'> <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span> <span className='button-text'>Current Location</span></button>
+
+                        <button onClick={getLocation} className='button flex   items-center gap-3  tracking-tight font-medium'> <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span> <span className='button-text'>{isget ?
+
+
+                            <div className="flex justify-between items-center w-[70px] mx-[21px] my-[6px]" >
+                                <div className="pulse-bubble pulse-bubble-1"></div>
+                                <div className="pulse-bubble pulse-bubble-2"></div>
+                                <div className="pulse-bubble pulse-bubble-3"></div>
+                            </div>
+
+                            : `Current Location`}</span></button>
                     </div>
                 </div>
             </div>
