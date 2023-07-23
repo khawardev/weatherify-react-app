@@ -9,9 +9,9 @@ const yes = 'yes'
 export const fetchDataFromApi = async (location, DateEndpoint) => {
 
 
-    const current_url = 'http://api.weatherapi.com/v1/current.json';
-    const astronomy_url = 'http://api.weatherapi.com/v1/astronomy.json';
-    const Forcast_url = `http://api.weatherapi.com/v1/forecast.json`;
+    const current_url = 'https://api.weatherapi.com/v1/current.json';
+    const astronomy_url = 'https://api.weatherapi.com/v1/astronomy.json';
+    const Forcast_url = `https://api.weatherapi.com/v1/forecast.json`;
     // http://api.weatherapi.com/v1/forecast.json?key=a06be27671514c478d0102205231207&q=Mamu Kanjan&days=7&aqi=no&alerts=no
     try {
         const currentresponse = await axios?.get(`${current_url}?key=${apiKey}&q=${location}&lang=${language}&aqi=${yes}`);
