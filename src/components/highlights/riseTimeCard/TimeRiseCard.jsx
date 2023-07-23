@@ -16,7 +16,8 @@ const TimeRiseCard = ({ Day, Time, Icon }) => {
                 <div>
                     <p className='font-semibold '>{Day}</p>
                     <div className='sm:text-4xl text-3xl font-semibold text-white'>
-                        {Time}
+                        {Time ? ` ${Time}` : 'loading...'}
+                        {/* {Time} */}
                     </div>
                 </div>
             </div>

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Forcastcards from './forcastcards/Forcastcards';
-const Forcast = ({ classes, text, AvailaibleToday, ForcastData}) => {
-    const rotationAngles = Array.from({ length: 8 }, (_, index) => index * 45);
-    const colorclass = 'rounded-full w-3/5 mx-auto text-white '
+const Forcast = ({ classes, text, AvailaibleToday, ForcastData ,DayForcast}) => {
+   
     return (
         <div >
             <div className=' my-5 '>
@@ -11,40 +10,19 @@ const Forcast = ({ classes, text, AvailaibleToday, ForcastData}) => {
                 <div className={classes} >
                     {AvailaibleToday ? (
                         <>
-                            {rotationAngles.map((index) => (
-                                <Forcastcards key={index} colorclass='text-white' LocationIconclasses={'my-6  flex justify-center text-6xl'} index={index} />
-                            ))}
-
+                            {/* colorclass='text-white' LocationIconclasses={'my-6  flex justify-center text-6xl'} */}
+                            <Forcastcards AvailaibleToday={AvailaibleToday}  DayForcast={DayForcast} />
                         </>
-                    ) :
+                    ) : (
                         <>
-                            {ForcastData && (
-                                <>
-                                    <Forcastcards Iconparams={'cloud'} colorclass={colorclass} ForcastData={ForcastData}   />
-
-                                </>
-                            )}
-
+                            <Forcastcards Iconparams={'cloud'} colorclass={'rounded-full w-3/5 mx-auto text-white'} ForcastData={ForcastData} />
                         </>
-                    }
+                    )}
+
+
 
                 </div>
             </div>
-
-
-            {AvailaibleToday ? (
-                <>
-                    <hr className=" border-slate-400 mb-3 w-11/12 mx-auto" />
-                    <div className=' my-5 '>
-                        <div className={classes} >
-                            {rotationAngles.map((index) => (
-                                <Forcastcards Style={{ transform: `rotate(${index}deg)`, color: '#2298F1' }} key={index} colorclass='text-white' Iconparams={'Location'} LocationIconclasses={'my-8  flex justify-center text-4xl'} />
-                            ))}
-                        </div>
-                    </div>
-                </>
-            ) : null}
-
         </div>
     )
 }

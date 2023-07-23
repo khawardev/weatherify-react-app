@@ -4,35 +4,37 @@
 import './navbar.scss'
 import { FiSearch } from 'react-icons/fi';
 import { TbCurrentLocation } from 'react-icons/tb';
-
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, useRef } from 'react';
 import { Context } from '../../context/AppContext';
+import { BiSolidHandDown } from 'react-icons/bi';
 
 const Navbar = () => {
 
     const { lat, setlat } = useContext(Context);
     const { lon, setlon } = useContext(Context);
+    const inputRef = useRef(null);
 
     const { DateEndpoint, setDateEndpoint } = useContext(Context);
-    const [isget, Setisget] = useState(false)
+    const { isget, Setisget } = useContext(Context);
+    const { islocation, seislocation } = useContext(Context);
 
     function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-            Setisget(true)
+        lat == null ? Setisget(true) : Setisget(false)
 
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+        navigator.geolocation.getCurrentPosition(function (location) {
+            setlat(location.coords.latitude);
+            setlon(location.coords.longitude);
+            // setlat(null)
+            // setlon(null)
+        });
+
     }
 
-    function showPosition(position) {
-        setlat(position.coords.latitude);
-        setlon(position.coords.longitude);
-    }
     useEffect(() => {
         Setisget(false)
-    }, [DateEndpoint]);
+        // lat == null ? seislocation(false) : seislocation(true)
+        // lat && seislocation(true)
+    }, [lat]);
 
 
     const Weathersvg =
@@ -41,8 +43,15 @@ const Navbar = () => {
 	             c2.4,0,4.3-1.9,4.3-4.3C22.5,12.8,21.3,11.1,19.5,10.5z" fill="#ffffff"></path>
         </svg>
 
-
-
+    const { Text, setText } = useContext(Context);
+    const [query, setquery] = useState(''); // setquery from input into the state
+    const searchQueryHandler = (event) => {
+        if (event.key === "Enter" && query.length > 0) { // function to handle on Enter event
+            setText(event.target.value)
+            setquery('')
+            inputRef.current.blur();
+        }
+    }
 
 
 
@@ -70,7 +79,17 @@ const Navbar = () => {
 
                     <div className='flex items-center search-input-header-div '>
                         <div >
-                            <input className='search-input-header px-3 font-medium' placeholder='Enter the Location' type="text" name="" id="" />
+
+                            <input
+                                type="text"
+                                placeholder="Enter the Location"
+                                className="search-input-header px-3 font-medium"
+                                value={query}
+                                onChange={(event) => setquery(event.target.value)}
+                                onKeyUp={searchQueryHandler}
+                                ref={inputRef}
+                            />
+
                         </div>
 
                         <div>
@@ -79,16 +98,34 @@ const Navbar = () => {
                     </div>
                     <div>
 
-                        <button onClick={getLocation} className='button flex   items-center gap-3  tracking-tight font-medium'> <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span> <span className='button-text'>{isget ?
+                        <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
+                            <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span>
+                            <span className='button-text'>
+                                {isget ? (
+                                    <div className="flex justify-between items-center w-[70px] mx-[21px] my-[6px]">
+                                        <div className="pulse-bubble pulse-bubble-1"></div>
+                                        <div className="pulse-bubble pulse-bubble-2"></div>
+                                        <div className="pulse-bubble pulse-bubble-3"></div>
+                                    </div>
+                                ) : (
+                                    islocation ? (
+                                        <>
+                                            Your Location
+                                        </>
+                                    ) : (
+                                        <>Current Location</>
+                                    )
+                                )}
 
-
-                            <div className="flex justify-between items-center w-[70px] mx-[21px] my-[6px]" >
-                                <div className="pulse-bubble pulse-bubble-1"></div>
-                                <div className="pulse-bubble pulse-bubble-2"></div>
-                                <div className="pulse-bubble pulse-bubble-3"></div>
-                            </div>
-
-                            : `Current Location`}</span></button>
+                            </span>
+                            {
+                                islocation && (
+                                    <>
+                                        <span> <BiSolidHandDown /> </span>
+                                    </>
+                                )
+                            }
+                        </button>
                     </div>
                 </div>
             </div>

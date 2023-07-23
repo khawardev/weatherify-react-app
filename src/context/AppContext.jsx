@@ -7,13 +7,14 @@ import { useState } from "react"
 export const Context = createContext();
 
 const AppContext = ({ children }) => {
+    const [islocation, seislocation] = useState(false)
 
-
-    const [lat, setlat] = useState();
-    const [lon, setlon] = useState();
-
-
-   
+    const [lat, setlat] = useState(null);
+    const [lon, setlon] = useState(null);
+    const [Text, setText] = useState('');
+    
+    const [isget, Setisget] = useState(false)
+    
     const [utcEpoch, setutcEpoch] = useState();
     const [DateEndpoint, setDateEndpoint] = useState();
     const [localDate, setlocalDate] = useState();
@@ -78,7 +79,10 @@ const AppContext = ({ children }) => {
                 Timedata, setTimedata,
                 TimeZone, setTimeZone,
                 lat, setlat,
-                lon, setlon
+                lon, setlon,
+                Text, setText,
+                isget, Setisget,
+                islocation, seislocation
             }}>
             {children}
         </Context.Provider>

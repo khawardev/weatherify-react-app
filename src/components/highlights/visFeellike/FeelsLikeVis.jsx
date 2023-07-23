@@ -21,7 +21,7 @@ const FeelsLikeVis = ({Name, Icon, Number, power , size}) => {
                         {icon}
                     </div>
                     <div className='sm:text-4xl text-2xl font-semibold'>
-                        {Number} <span className=' sm:text-3xl text-2xl '>{Usedpower}</span>
+                    {Number ? ` ${Number}` : 'loading...'} <span className=' sm:text-3xl text-2xl '>{Usedpower}</span>
                     </div>
                 </div>
             </div>

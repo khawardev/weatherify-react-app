@@ -12,7 +12,6 @@ const LeftForcast = ({ data }) => {
     const firstFourElements = airQualityData ? Object.entries(airQualityData).slice(0, 4) : [];
     const AQI = airQualityData ? Object.entries(airQualityData).slice(-1)[0][1] : null;
 
-    // console.log("🚀 ~ file: LeftForcast.jsx:14 ~ LeftForcast ~ AQI:", AQI)
     const [index, setIndex] = useState();
     const [indexclasss, setIndexclass] = useState();
 
@@ -62,7 +61,7 @@ const LeftForcast = ({ data }) => {
                         <div>
 
 
-                            {data ? <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white rounded-full font-semibold `} style={{ fontSize: '13px' }}>{index}</p> : 'loading...'}
+                            {data ? <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white rounded-full font-semibold `} style={{ fontSize: '14px' }}>{index}</p> : 'loading...'}
                         </div>
                     </div>
                     <div className=" flex justify-between items-center  ">
