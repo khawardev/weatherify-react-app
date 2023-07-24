@@ -3,6 +3,7 @@
 /* eslint-disable react/no-unknown-property */
 import './navbar.scss'
 import { FiSearch } from 'react-icons/fi';
+import { BiSearch, BiX } from 'react-icons/bi';
 import { TbCurrentLocation } from 'react-icons/tb';
 import { useEffect, useContext, useState, useRef } from 'react';
 import { Context } from '../../context/AppContext';
@@ -53,8 +54,11 @@ const Navbar = () => {
         }
     }
 
+    const [searchVisible, setSearchVisible] = useState(true);
+    const handleSearchClick = () => {
+        setSearchVisible(!searchVisible);
 
-
+    };
 
 
 
@@ -75,11 +79,10 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className='flex  lg:justify-between justify-end lg:gap-0 gap-4 w-2/3'>
+                <div className='flex  lg:justify-between justify-end lg:gap-0 gap-4 w-2/3   '>
 
-                    <div className='flex items-center search-input-header-div '>
+                    <div className='md:flex hidden items-center search-input-header-div '>
                         <div >
-
                             <input
                                 type="text"
                                 placeholder="Enter the Location"
@@ -91,12 +94,47 @@ const Navbar = () => {
                             />
 
                         </div>
-
                         <div>
-                            <FiSearch size={22} style={{ strokeWidth: '2', color: 'white' }} />
+                            <FiSearch size={22} style={{ strokeWidth: '2', color: 'white' }} onClick={handleSearchClick} />
                         </div>
                     </div>
-                    <div>
+                    <div className='md:hidden flex  items-center search-input-header-div h-[2.65rem]'>
+                        <div >
+                            {searchVisible && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter the Location"
+                                        className="search-input-header px-3 font-medium"
+                                        value={query}
+                                        onChange={(event) => setquery(event.target.value)}
+                                        onKeyUp={searchQueryHandler}
+                                        ref={inputRef}
+                                        autoFocus={true}
+                                    />
+                                </>
+
+
+                            )}
+
+                        </div>
+                        <div>
+                            {searchVisible ? (
+                                <BiX size={28} style={{ color: 'white' }} onClick={handleSearchClick} />
+                            ) : (
+                                <FiSearch size={22} style={{ strokeWidth: '2', color: 'white' }} onClick={handleSearchClick} />
+
+                            )}
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div className=' flex items-center justify-center'>
 
                         <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
                             <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span>

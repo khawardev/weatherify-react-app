@@ -17,6 +17,7 @@ import { CgCalendarToday } from 'react-icons/cg';
 import useFetch from '../../hook/UseFetch';
 import { useState, useEffect, useContext } from 'react';
 import { Context } from '../../context/AppContext';
+import Sunny from '../../assets/113.png';
 const Current = ({ data }) => {
 
 
@@ -86,9 +87,16 @@ const Current = ({ data }) => {
                                 {data ? `${data?.current?.temp_c.toFixed(0)}°C` : 'loading...'}
                             </p>
                         </div>
-                        <div className='text-white  my-7 '>
-                            {data ? getWeatherIcon(data?.current?.condition?.text) : 'loading...'}
-                            {/* {getWeatherIcon(data?.current?.condition?.text)} */}
+                        <div className='text-white sm:my-7  my-4  '>
+                            {data?.current?.condition?.text === 'Sunny' ? <img className='w-20' src={Sunny} alt="" /> : (data?.current?.condition?.text === 'Clear' ?
+                                    <img className='w-24' src={data?.current?.condition?.icon} alt="" /> :
+                                    <img className='sm:w-20' src={data?.current?.condition?.icon} alt="" />
+
+                                )}
+
+                            {/* {data ? getWeatherIcon(data?.current?.condition?.text) : 'loading...'} */}
+                            {/* {data ? <img className='sm:w-20 ' src={data?.current?.condition?.icon} alt="" /> : 'loading...'} */}
+                            {/* {data?.current?.condition?.icon} */}
                             {/* <WiCloud /> */}
                         </div>
 
@@ -96,7 +104,7 @@ const Current = ({ data }) => {
 
                     <p className='font-semibold'>{data ? `${data?.current?.condition?.text}` : 'loading...'}</p>
 
-                    <hr className="  my-5" style={{border:'1px solid #6E6E70'}} />
+                    <hr className="hr-border  my-5" />
 
                     <div className='flex gap-2 items-center mb-4'>
                         <div className='text-white mr-1'>

@@ -1,0 +1,41 @@
+
+// .carousel {
+//     display: flex;
+//     overflow-x: auto;
+//     scroll-snap-type: x mandatory; /* enable smooth scrolling on browsers that support it */
+//     scrollbar-width: none; /* hide scrollbar on browsers that support it */
+//     -ms-overflow-style: none; /* hide scrollbar on IE and Edge */
+//     -webkit-overflow-scrolling: touch; /* enable smooth scrolling on iOS devices */
+//   }
+  
+//   .carousel::-webkit-scrollbar {
+//     display: none; /* hide scrollbar on Chrome, Safari, and Opera */
+//   }
+  
+//   .cards {
+//     display: flex;
+//     flex-wrap: nowrap;
+//   }
+  
+//   .card {
+//     width: 200px;
+//     height: 300px;
+//     background-color: #f0f0f0;
+//     border-radius: 8px;
+//     padding: 16px;
+//     margin: 8px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     font-size: 24px;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//     scroll-snap-align: start; /* snap each card to the start of the container */
+//   }
+  
+//   @media (max-width: 600px) {
+//     .card {
+//       width: 150px; /* decrease card width on smaller screens */
+//       height: 225px; /* decrease card height on smaller screens */
+//       font-size: 20px; /* adjust font size on smaller screens */
+//     }
+//   }

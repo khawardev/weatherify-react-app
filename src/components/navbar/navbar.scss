@@ -1,17 +1,20 @@
 @import "../../mixins.scss";
 
 .search-input-header {
-  width: 400px;
+  width: 210px;
   background-color: transparent;
   color: var(--text-dark-white);
   outline: 0;
   border: 0;
+
   animation: mobileSearchFade 0.3s ease-in-out forwards;
   color: var(--text-dark-white);
-  display: none;
+  // display: none;
   @include lg {
+    width: 400px;
     display: block;
   }
+
 }
 
 .search-input-header:focus {
