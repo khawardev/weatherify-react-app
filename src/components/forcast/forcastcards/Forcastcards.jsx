@@ -144,7 +144,7 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
             {AvailaibleToday && (
                 <>
                     {Dayapi()?.map((data) => (
-                        <div key={data?.time_epoch} className="sidebar rounded-2xl p-5 text-center  w-full min-w-[150px]">
+                        <div key={data?.time_epoch} className="sidebar rounded-2xl p-5 text-center  w-full min-w-[157px]">
                             <p className="font-semibold text-white">{HandleDay(data?.time_epoch)}</p>
                             <div className="flex justify-center my-5">
                                 {data?.condition?.text === 'Clear' ? <img className='w-24 ' src={data?.condition?.icon} alt="" /> : <img className='sm:w-18 my-4' src={data?.condition?.icon} alt="" />}
@@ -163,7 +163,7 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
             {LocationToday &&
                 <>
                     {Dayapi()?.map((data, index) => (
-                        <div key={index} className="sidebar rounded-2xl p-5 text-center w-full min-w-[150px] ">
+                        <div key={index} className="sidebar rounded-2xl p-5 text-center w-full min-w-[157px] ">
                             <p className="font-semibold text-white">{HandleDay(data?.time_epoch)}</p>
                             <div className='flex justify-center my-12'>
                                 <FaLocationArrow size={33} style={{ transform: `rotate(${index * 45}deg)`, color: '#2298F1' }} />

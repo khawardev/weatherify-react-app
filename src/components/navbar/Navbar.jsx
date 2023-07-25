@@ -25,8 +25,6 @@ const Navbar = () => {
         navigator.geolocation.getCurrentPosition(function (location) {
             setlat(location.coords.latitude);
             setlon(location.coords.longitude);
-            // setlat(null)
-            // setlon(null)
         });
 
     }
@@ -54,7 +52,7 @@ const Navbar = () => {
         }
     }
 
-    const [searchVisible, setSearchVisible] = useState(true);
+    const [searchVisible, setSearchVisible] = useState(false);
     const handleSearchClick = () => {
         setSearchVisible(!searchVisible);
 
@@ -122,6 +120,7 @@ const Navbar = () => {
                             {searchVisible ? (
                                 <BiX size={28} style={{ color: 'white' }} onClick={handleSearchClick} />
                             ) : (
+                                
                                 <FiSearch size={22} style={{ strokeWidth: '2', color: 'white' }} onClick={handleSearchClick} />
 
                             )}
@@ -159,7 +158,7 @@ const Navbar = () => {
                             {
                                 islocation && (
                                     <>
-                                        <span> <BiSolidHandDown /> </span>
+                                        <span className=' md:flex hidden'> <BiSolidHandDown /> </span>
                                     </>
                                 )
                             }

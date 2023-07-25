@@ -1,7 +1,7 @@
 @import "../../mixins.scss";
 
 .search-input-header {
-  width: 210px;
+  width: 225px;
   background-color: transparent;
   color: var(--text-dark-white);
   outline: 0;
@@ -46,7 +46,7 @@
   }
   .button-text {
     display: none;
-    @include lg {
+    @include md {
       display: block;
     }
   }
