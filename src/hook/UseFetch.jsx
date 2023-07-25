@@ -6,28 +6,30 @@ import { fetchDataFromApi } from "../utils/api"
 const useFetch = (location, DateEndpoint) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(null);
     // useEffect(() => {
     //     lat = null;
     //     lon = null;
     // }, [location]);
 
     useEffect(() => {
+        setLoading("loading...");
         setData(null);
         setError(null);
 
         fetchDataFromApi(location, DateEndpoint)
             .then((res) => {
-                // setLoading(false);
+                setLoading(false);
                 setData(res);
             })
             .catch((error) => {
-                // setLoading(false);
+                setLoading(false);
                 setError("Something went wrong!", error);
             });
 
 
     }, [location]);
-    return { data, error };
+    return { data, error,loading };
 };
 
 

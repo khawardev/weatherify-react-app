@@ -59,9 +59,7 @@ const LeftForcast = ({ data }) => {
                     <div className='flex justify-between'>
                         <p className='mb-4 font-semibold'>Air Quality Index</p>
                         <div>
-
-
-                            {data ? <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white rounded-full font-semibold `} style={{ fontSize: '14px' }}>{index}</p> : 'loading...'}
+                            <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white rounded-full font-semibold `} style={{ fontSize: '14px' }}>{index}</p>
                         </div>
                     </div>
                     <div className=" flex justify-between items-center  ">
@@ -72,17 +70,14 @@ const LeftForcast = ({ data }) => {
                         </div>
                         <div className=" grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-6 py-8  items-center">
 
-                            {data ?
-                                <>
-                                    {firstFourElements.map(([key, value]) => (
-                                        <div key={key}>
-                                            <QualityAirCard data={data} Text={key.toUpperCase()} Number={value.toFixed(0)} />
-                                        </div>
-                                    ))}
-                                </>
-                                :
-                                'loading....'
-                            }
+
+                            <>
+                                {firstFourElements.map(([key, value]) => (
+                                    <div key={key}>
+                                        <QualityAirCard data={data} Text={key.toUpperCase()} Number={value.toFixed(0)} />
+                                    </div>
+                                ))}
+                            </>
 
                         </div>
                     </div>

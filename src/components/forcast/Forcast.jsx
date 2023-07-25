@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import Forcastcards from './forcastcards/Forcastcards';
 import './forcast.scss';
+import ForcastCardSkeleton from './forcastcards/ForcastCardSkeleton';
+import ForcastSkeleton from './ForcastSkeleton';
 const Forcast = ({ grid, text, AvailaibleToday, ForcastData, DayForcast, LocationToday }) => {
 
     return (
@@ -10,15 +12,18 @@ const Forcast = ({ grid, text, AvailaibleToday, ForcastData, DayForcast, Locatio
 
                 {AvailaibleToday ? (
                     <>
-                    <div className='flex justify-between'>
-                        <p className='text-white px-1 text-xl font-semibold mb-5'>{text}</p>
-                        <p className='text-white px-1 text-xl font-semibold mb-5 sm:hidden block'>{'-->'}</p>
+                        <div className='flex justify-between'>
+                            <p className='text-white px-1 text-xl font-semibold mb-5'>{text}</p>
+                            <p className='text-white px-1 text-xl font-semibold mb-5 sm:hidden block'>{'-->'}</p>
+                        </div>
+                        <div className='flex-nowrap overflow-x-auto sm:pb-0 pb-4'>
+                            {DayForcast ?
+                                <div className={`flex gap-4 mb-4`}>
+                                    <Forcastcards AvailaibleToday={AvailaibleToday} DayForcast={DayForcast} />
+                                </div>
+                                : <ForcastSkeleton card={2} />
+                            }
 
-                    </div>
-                        <div className='flex-nowrap overflow-x-auto'>
-                            <div className={`flex gap-4 mb-4`}>
-                                <Forcastcards AvailaibleToday={AvailaibleToday} DayForcast={DayForcast} />
-                            </div>
                             <div className={`flex gap-4`}>
                                 <Forcastcards LocationToday={LocationToday} DayForcast={DayForcast} />
                             </div>
@@ -28,7 +33,7 @@ const Forcast = ({ grid, text, AvailaibleToday, ForcastData, DayForcast, Locatio
                     <>
                         <p className='text-white px-1 text-xl font-semibold mb-5'>{text}</p>
                         <div className={`grid ${grid} gap-4`}>
-                            <Forcastcards Iconparams={'cloud'} colorclass={'rounded-full w-3/5 mx-auto text-white'} ForcastData={ForcastData} />
+                            <Forcastcards ForcastData={ForcastData} forcats={true} />
                         </div>
                     </>
                 )}

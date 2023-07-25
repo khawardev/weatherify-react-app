@@ -13,12 +13,13 @@ import { RiHeavyShowersLine, RiMoonClearLine } from 'react-icons/ri';
 import { useState } from 'react';
 import { useEffect, useContext } from 'react';
 import { Context } from '../../../context/AppContext';
-
+import Skeleton from 'react-loading-skeleton';
 
 import Sunny from '../../../assets/113.png';
+import ForcastCardSkeleton from './ForcastCardSkeleton';
 
 
-const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday }) => {
+const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, LocationToday }) => {
     const Dayapi = () => {
         function extractObjectsWithGap(apiResponse, gap) {
             const result = [];
@@ -60,43 +61,7 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
         const dayName = daysOfWeek[dayOfWeekIndex];
         return dayName;
     }
-    const getWeatherIcon = (condition) => {
-        switch (condition) {
-            case 'Partly cloudy':
-                return <IoPartlySunnyOutline className='my-7' size={70} />;
-            case 'Sunny':
-                return <WiDaySunny size={70} className='my-7' />;
-            case 'Mist':
-                return <BsCloudFog size={70} className='my-7' />;
-            case 'Heavy rain':
-                return <BsCloudRainHeavy size={70} className='my-[1.69rem]' />;
-            case 'Moderate or heavy rain with thunder':
-                return <WiThunderstorm size={70} className='my-7' />;
-            case 'Moderate rain':
-                return <IoRainyOutline size={70} className='my-7' />;
-            case 'Patchy rain possible':
-                return <WiNightRain size={75} className='my-[1.45rem]' />;
-            case 'Overcast':
-                return <WiDaySunnyOvercast size={85} className='my-[1.20rem]' />;
-            case 'Light rain':
-            case 'Light rain shower':
-                return <PiCloudRain size={70} className='my-7' />;
-            case 'Torrential rain shower':
-                return <FiCloudRain size={70} className='my-7' />;
-            case 'Thundery outbreaks possible':
-                return <BsCloudLightningRain size={70} className='my-7' />;
-            case 'Light drizzle':
-                return <BiCloudLightRain size={70} className='my-7' />;
-            case 'Patchy light rain with thunder':
-                return <WiNightThunderstorm size={70} className='my-7' />;
-            case 'Moderate or heavy rain shower':
-                return <RiHeavyShowersLine size={70} className='my-7' />;
-            case 'Clear':
-                return <RiMoonClearLine size={65} className='my-7' />;
-            default:
-                return <WiCloud size={80} className='my-7' />;
-        }
-    };
+
 
 
 
@@ -119,37 +84,45 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
 
     return (
         <>
+            {forcats &&
+                <>
+                    {ForcastData ?
 
-            {ForcastData?.map((ForcastData, index) => (
-                <div key={index} className="sidebar rounded-2xl p-5 text-center">
-                    <p className="font-semibold text-white">{daysOfWeek[index]}</p>
-                    <div className='flex justify-center my-[1.58rem]'>
-                        {ForcastData?.day?.condition?.text === 'Sunny' ? <img className='sm:w-18 ' src={Sunny} alt="" /> : <img className='sm:w-18 ' src={ForcastData?.day?.condition?.icon} alt="" />}
-                        {/* <img className='sm:w-18 ' src={ForcastData?.day?.condition?.icon} alt="" /> */}
-                        {/* {getWeatherIcon(ForcastData?.day?.condition?.text)} */}
-                    </div>
-                    <p className='rounded-full w-3/5 mx-auto text-white' style={{ fontSize: '14px' }}>
-                        {ForcastData?.day?.avgtemp_c === 'Thundery outbreaks possible' ? 'Thundery' : ForcastData?.day?.avgtemp_c.toFixed(0)}°C
-                    </p>
-                    <p className='w-full' style={{ fontSize: '14px' }}>
-                        {ForcastData?.day?.condition?.text === 'Thundery outbreaks possible' ? 'Thundery' : ForcastData?.day?.condition?.text?.split(' ').slice(0, 2).join(' ')}
-                        {/* {ForcastData?.day?.condition?.text?.split(' ').slice(0, 2).join(' ')} */}
-                    </p>
-                </div>
-            ))}
+                        <>
+                            {ForcastData?.map((ForcastData, index) => (
+
+                                <div key={index} className="sidebar rounded-2xl p-5 text-center">
+                                    <p className="font-semibold text-white">{daysOfWeek[index]}</p>
+                                    <div className='flex justify-center my-[1.58rem]'>
+                                        {ForcastData?.day?.condition?.text === 'Sunny' ? <img className='sm:w-18 ' src={Sunny} alt="" /> : <img className='sm:w-18 ' src={ForcastData?.day?.condition?.icon} alt="" />}
+                                    </div>
+                                    <p className='rounded-full w-3/5 mx-auto text-white' style={{ fontSize: '14px' }}>
+                                        {ForcastData?.day?.avgtemp_c === 'Thundery outbreaks possible' ? 'Thundery' : ForcastData?.day?.avgtemp_c.toFixed(0)}°C
+                                    </p>
+                                    <p className='w-full' style={{ fontSize: '14px' }}>
+                                        {ForcastData?.day?.condition?.text === 'Thundery outbreaks possible' ? 'Thundery' : ForcastData?.day?.condition?.text?.split(' ').slice(0, 2).join(' ')}
+                                    </p>
+                                </div>
+                            ))}
+                        </>
+
+                        : <ForcastCardSkeleton card={6} />}
+                </>
+            }
 
 
 
 
             {AvailaibleToday && (
+
+
                 <>
                     {Dayapi()?.map((data) => (
+
                         <div key={data?.time_epoch} className="sidebar rounded-2xl p-5 text-center  w-full min-w-[157px]">
                             <p className="font-semibold text-white">{HandleDay(data?.time_epoch)}</p>
                             <div className="flex justify-center my-5">
                                 {data?.condition?.text === 'Clear' ? <img className='w-24 ' src={data?.condition?.icon} alt="" /> : <img className='sm:w-18 my-4' src={data?.condition?.icon} alt="" />}
-
-
                             </div>
                             <p className="rounded-full w-3/5 mx-auto text-white" style={{ fontSize: '14px' }}>
                                 {data?.temp_c}°C
@@ -157,10 +130,12 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
                         </div>
                     ))}
                 </>
+
             )}
 
 
             {LocationToday &&
+
                 <>
                     {Dayapi()?.map((data, index) => (
                         <div key={index} className="sidebar rounded-2xl p-5 text-center w-full min-w-[157px] ">
@@ -175,6 +150,7 @@ const Forcastcards = ({ ForcastData, AvailaibleToday, DayForcast, LocationToday 
                     ))}
 
                 </>
+                
             }
 
 

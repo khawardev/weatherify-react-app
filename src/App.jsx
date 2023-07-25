@@ -4,17 +4,26 @@
 import './App.css'
 import Navbar from './components/navbar/Navbar'
 import { FaHeart } from 'react-icons/fa';
+
 import Highlights from './components/highlights/Highlights';
 import DayForcast from './components/dayForcast/DayForcast';
 import { useEffect, useState } from 'react';
 import useFetch from './hook/UseFetch';
 import ForcastCurrent from './components/forcastCurrent/ForcastCurrent';
 import { Context } from './context/AppContext';
-import { useContext } from 'react';
-
+import { useContext, createContext } from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
 function App() {
+
+
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
 
   const { DateEndpoint, setDateEndpoint } = useContext(Context);
   const { TimeZone, setTimeZone } = useContext(Context);
@@ -26,7 +35,7 @@ function App() {
   const [Defaultlocation, setDefaultlocation] = useState('Islamabad')
 
 
-  const { data, error } = useFetch(Text ? Text : Defaultlocation, DateEndpoint);
+  const { data, error, loading } = useFetch(Text ? Text : Defaultlocation, DateEndpoint);
 
   useEffect(() => {
     data && setTimeZone(data?.currentResponseData?.location?.tz_id)
@@ -61,12 +70,16 @@ function App() {
   return (
     <>
 
-      <Navbar />
-      <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} />
-      <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
-      <DayForcast DayForcast={data?.DayForcastresponseResponseData?.hour} />
-      {footer()}
+      <SkeletonTheme baseColor="#202020" highlightColor="#444">
 
+
+        <Navbar />
+        <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} loading={loading} />
+        <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
+        <DayForcast DayForcast={data?.DayForcastresponseResponseData?.hour} />
+        {footer()}
+
+      </SkeletonTheme>
     </>
 
   )

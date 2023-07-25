@@ -8,7 +8,9 @@ import { TbCurrentLocation } from 'react-icons/tb';
 import { useEffect, useContext, useState, useRef } from 'react';
 import { Context } from '../../context/AppContext';
 import { BiSolidHandDown } from 'react-icons/bi';
-
+import axios from 'axios';
+import { BsSun } from 'react-icons/bs';
+import { FaMoon } from 'react-icons/fa6';
 const Navbar = () => {
 
     const { lat, setlat } = useContext(Context);
@@ -19,18 +21,36 @@ const Navbar = () => {
     const { isget, Setisget } = useContext(Context);
     const { islocation, seislocation } = useContext(Context);
 
+
+
+    const fetchDataCorrdinates = async () => {
+        try {
+            const Corrdinates = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+            const data = await Corrdinates.json();
+            console.log("🚀 ~ file: Navbar.jsx:29 ~ fetchDataCorrdinates ~ data:", data)
+            // return data;
+        } catch (error) {
+            console.log("Error in fetching API ....");
+            throw error;
+        }
+    };
+
+
+
     function getLocation() {
         lat == null ? Setisget(true) : Setisget(false)
-
         navigator.geolocation.getCurrentPosition(function (location) {
             setlat(location.coords.latitude);
             setlon(location.coords.longitude);
         });
 
+
+
     }
 
     useEffect(() => {
         Setisget(false)
+        lat && fetchDataCorrdinates()
         // lat == null ? seislocation(false) : seislocation(true)
         // lat && seislocation(true)
     }, [lat]);
@@ -58,7 +78,11 @@ const Navbar = () => {
 
     };
 
+    const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);
 
+    const toggleIcon = () => {
+        setIsMoonIconVisible((prevIsMoonIconVisible) => !prevIsMoonIconVisible);
+    };
 
 
     return (
@@ -120,7 +144,7 @@ const Navbar = () => {
                             {searchVisible ? (
                                 <BiX size={28} style={{ color: 'white' }} onClick={handleSearchClick} />
                             ) : (
-                                
+
                                 <FiSearch size={22} style={{ strokeWidth: '2', color: 'white' }} onClick={handleSearchClick} />
 
                             )}
@@ -131,9 +155,33 @@ const Navbar = () => {
 
 
 
+                    <div className=' flex items-center justify-center gap-3'>
+
+                        {/* <button className='sm:flex hidden  items-center justify-center p-3  rounded-full toggle-button' >
+                            <FaMoon size={20} color='white' />
+                            <BsSun size={20} color='white' />
+                        </button> */}
 
 
-                    <div className=' flex items-center justify-center'>
+
+                        <button
+                            className='md:flex hidden items-center justify-center p-3 rounded-full toggle-button'
+                            onClick={toggleIcon}
+                        >
+                            {isMoonIconVisible ? (
+                                <BsSun size={20} color='white' />
+
+                            ) : (
+                                <FaMoon size={20} color='white' />
+
+                            )}
+                        </button>
+
+
+
+
+
+
 
                         <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
                             <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span>

@@ -18,6 +18,17 @@ import useFetch from '../../hook/UseFetch';
 import { useState, useEffect, useContext } from 'react';
 import { Context } from '../../context/AppContext';
 import Sunny from '../../assets/113.png';
+import Skeleton from 'react-loading-skeleton';
+import ForcastCardSkeleton from '../forcast/forcastcards/ForcastCardSkeleton';
+
+
+
+
+
+
+
+
+
 const Current = ({ data }) => {
 
 
@@ -35,39 +46,6 @@ const Current = ({ data }) => {
         setDateEndpoint(data && localDate)
     }, [data, localDate]);
 
-    const getWeatherIcon = (condition) => {
-        switch (condition) {
-            case 'Partly cloudy':
-                return <IoPartlySunnyOutline size={95} />;
-            case 'Sunny':
-                return <WiDaySunny size={95} />;
-            case 'Mist':
-                return <BsCloudFog size={95} />;
-            case 'Heavy rain':
-                return <BsCloudRainHeavy size={95} />;
-            case 'Moderate or heavy rain with thunder':
-                return <WiThunderstorm size={95} />;
-            case 'Moderate rain':
-                return <IoRainyOutline size={95} />;
-            case 'Patchy rain possible':
-                return <WiDayRainMix size={95} />;
-            case 'Overcast':
-                return <WiDaySunnyOvercast size={95} />;
-            case 'Light rain':
-            case 'Light rain shower':
-                return <PiCloudRain size={95} />;
-            case 'Torrential rain shower':
-                return <FiCloudRain size={95} />;
-            case 'Thundery outbreaks possible':
-                return <BsCloudLightningRain size={95} />;
-            case 'Light drizzle':
-                return <BiCloudLightRain size={95} />;
-            case 'Patchy light rain with thunder':
-                return <WiNightThunderstorm size={95} />;
-            default:
-                return <WiCloud size={95} />;
-        }
-    };
 
 
 
@@ -75,66 +53,71 @@ const Current = ({ data }) => {
 
         <>
 
-            <div className=' my-5 '>
+            <div className='my-5 '>
                 <p className=' text-white  px-1 text-xl font-semibold mb-5'>Current Weather</p>
-
-                <div className="sidebar rounded-2xl px-5 py-14 " >
-
-                    <p className=" text-xl  font-semibold mb-3 text-white"> Now </p>
-                    <div className='flex items-center justify-between '>
-                        <div>
-                            <p className="text-white font-semibold sm:text-6xl text-5xl ">
-                                {data ? `${data?.current?.temp_c.toFixed(0)}°C` : 'loading...'}
-                            </p>
-                        </div>
-                        <div className='text-white sm:my-7  my-4  '>
-                            {data?.current?.condition?.text === 'Sunny' ? <img className='w-20' src={Sunny} alt="" /> : (data?.current?.condition?.text === 'Clear' ?
+                {data ?
+                    <div className="sidebar rounded-2xl px-5 py-14 " >
+                        <p className=" text-xl  font-semibold mb-3 text-white"> Now </p>
+                        <div className='flex items-center justify-between '>
+                            <div>
+                                <p className="text-white font-semibold sm:text-6xl text-5xl ">
+                                    {data?.current?.temp_c.toFixed(0)}°C
+                                </p>
+                            </div>
+                            <div className='text-white sm:my-7  my-4  '>
+                                {data?.current?.condition?.text === 'Sunny' ? <img className='w-20' src={Sunny} alt="" /> : (data?.current?.condition?.text === 'Clear' ?
                                     <img className='w-24' src={data?.current?.condition?.icon} alt="" /> :
                                     <img className='sm:w-20' src={data?.current?.condition?.icon} alt="" />
-
                                 )}
+                            </div>
 
-                            {/* {data ? getWeatherIcon(data?.current?.condition?.text) : 'loading...'} */}
-                            {/* {data ? <img className='sm:w-20 ' src={data?.current?.condition?.icon} alt="" /> : 'loading...'} */}
-                            {/* {data?.current?.condition?.icon} */}
-                            {/* <WiCloud /> */}
+                        </div>
+
+                        <p className='font-semibold'>{data?.current?.condition?.text}</p>
+
+                        <hr className="hr-border  my-5" />
+                        <div className='flex gap-2 items-center mb-4'>
+                            <div className='text-white mr-1'>
+                                <BiSolidTimeFive size={20} />
+                            </div>
+                            {data ?
+                                <div>
+                                    {Timedata}
+                                </div>
+
+                                : <Skeleton />
+                            }
+                        </div>
+
+                        <div className='flex gap-3 items-center mb-4'>
+                            <div className='text-white '>
+                                <CgCalendarToday size={20} />
+                            </div>
+                            <div>
+                                {dayName} - {formattedDate}
+                            </div>
+
+                        </div>
+
+                        <div className='flex gap-3 items-center'>
+                            <div className='text-white '>
+                                <FaLocationDot size={18} />
+                            </div>
+                            <div>
+                                {data?.location?.name}, {data?.location?.country}
+                            </div>
                         </div>
 
                     </div>
 
-                    <p className='font-semibold'>{data ? `${data?.current?.condition?.text}` : 'loading...'}</p>
 
-                    <hr className="hr-border  my-5" />
 
-                    <div className='flex gap-2 items-center mb-4'>
-                        <div className='text-white mr-1'>
-                            <BiSolidTimeFive size={20} />
-                        </div>
-                        <div>
-                            {data ? `${Timedata}` : 'loading...'}
-                        </div>
-                    </div>
-                    <div className='flex gap-3 items-center mb-4'>
-                        <div className='text-white '>
-                            <CgCalendarToday size={20} />
-                        </div>
-                        <div>
-                            {data ? `${dayName} - ${formattedDate}` : 'loading...'}
-                        </div>
+                    : <Skeleton style={{ borderRadius: '1rem' }} height={454} />}
 
-                    </div>
-                    <div className='flex gap-3 items-center'>
-                        <div className='text-white '>
-                            <FaLocationDot size={18} />
-                        </div>
-                        <div>
-                            {data ? `${data?.location?.name}, ${data?.location?.country}` : 'loading...'}
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </>
+
+
 
     )
 

@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import Current from '../Current/Current'
 import Forcast from '../forcast/Forcast';
-const ForcastCurrent = ({data,ForcastData}) => {
+const ForcastCurrent = ({data,ForcastData,loading}) => {
   return (
     <>
     <div className=' w-11/12 mx-auto md:flex   gap-5 '>
           <div className='md:w-1/2'>
-            <Current data={data}  />
+            <Current data={data} loading={loading}  />
           </div>
           <div className='md:w-1/2'>
             
