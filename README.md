@@ -15,7 +15,7 @@ Weatherify is a React app that provides current weather, 6-day forecast, and hig
 
 ## Demo
 
-Check out the live demo of the Netflix verse React app [here](https://weatherifypro.vercel.app/).
+Check out the live demo of the Weatherify React app [here](https://weatherifypro.vercel.app/).
 
 ## Screenshots
 
