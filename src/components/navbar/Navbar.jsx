@@ -80,6 +80,8 @@ const Navbar = () => {
 
     const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);
     const {theme, setTheme} = useContext(Context);
+    const {baseColor, setbaseColor} = useContext(Context);
+    const {highlightColor, sethighlightColor} = useContext(Context);
 
 
 
@@ -87,7 +89,8 @@ const Navbar = () => {
         setTheme(theme === "Dark_mode" ? "Light_mode" : "Dark_mode");
         setIsMoonIconVisible((prevIsMoonIconVisible) => !prevIsMoonIconVisible);
         setLogocolor(logocolor === '#ffffff' ? '#000000': '#ffffff')
-
+        setbaseColor(baseColor === '#202020' ? 'rgb(200, 200, 200)': '#202020')
+        sethighlightColor(highlightColor === '#444' ? 'rgb(225, 225, 225)': '#444')
     };
 
 
@@ -148,7 +151,7 @@ const Navbar = () => {
                         </div>
                         <div>
                             {searchVisible ? (
-                                <BiX size={28} style={{ color: 'white' }} onClick={handleSearchClick} />
+                                <BiX size={28} style={{ color: `${logocolor}` }} onClick={handleSearchClick} />
                             ) : (
 
                                 <FiSearch size={22} style={{ strokeWidth: '2', color:  `${logocolor}` }} onClick={handleSearchClick} />

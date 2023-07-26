@@ -19,7 +19,8 @@ function App() {
 
 
   const {theme, setTheme} = useContext(Context);
-
+  const {baseColor, setbaseColor} = useContext(Context);
+  const {highlightColor, sethighlightColor} = useContext(Context);
 
   const { DateEndpoint, setDateEndpoint } = useContext(Context);
   const { TimeZone, setTimeZone } = useContext(Context);
@@ -66,7 +67,7 @@ function App() {
   return (
     <>
       <div className={` ${theme}`}>
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <SkeletonTheme baseColor={`${baseColor}`} highlightColor={`${highlightColor}`}>
 
           <Navbar />
           <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} loading={loading} />

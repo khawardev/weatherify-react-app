@@ -9,6 +9,8 @@ export const Context = createContext();
 const AppContext = ({ children }) => {
 
     const [theme, setTheme] = useState('Dark_mode');
+    const [baseColor, setbaseColor] = useState('#202020');
+    const [highlightColor, sethighlightColor] = useState('#444');
 
 
     const [islocation, seislocation] = useState(false)
@@ -87,7 +89,9 @@ const AppContext = ({ children }) => {
                 Text, setText,
                 isget, Setisget,
                 islocation, seislocation,
-                theme, setTheme
+                theme, setTheme,
+                baseColor, setbaseColor,
+                highlightColor, sethighlightColor
             }}>
             {children}
         </Context.Provider>
