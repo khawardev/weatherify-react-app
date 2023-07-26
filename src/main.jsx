@@ -4,7 +4,12 @@ import './index.scss'
 import AppContext from './context/AppContext.jsx';
 import 'react-loading-skeleton/dist/skeleton.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
+  
   <AppContext>
-      <App />
+    <App />
   </AppContext>
+
+
 )
+
+

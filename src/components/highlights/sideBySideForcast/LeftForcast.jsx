@@ -59,12 +59,12 @@ const LeftForcast = ({ data }) => {
                     <div className='flex justify-between'>
                         <p className='mb-4 font-semibold'>Air Quality Index</p>
                         <div>
-                            <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white rounded-full font-semibold `} style={{ fontSize: '14px' }}>{index}</p>
+                            <p className={`px-3 sm:mx-3 mx-0   ${indexclasss} text-white-black rounded-full font-semibold `} style={{ fontSize: '14px' }}>{index}</p>
                         </div>
                     </div>
                     <div className=" flex justify-between items-center  ">
                         <div className="py-8">
-                            <div className='sm:text-6xl text-5xl text-white'>
+                            <div className='sm:text-6xl text-5xl text-white-black'>
                                 <TbWind />
                             </div>
                         </div>

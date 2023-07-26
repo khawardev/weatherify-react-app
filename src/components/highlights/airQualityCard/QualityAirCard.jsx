@@ -5,7 +5,7 @@ const QualityAircard = ({ Text, Number }) => {
         <>
             <div className='text-center'>
                 <p className='font-semibold '>{Text}</p>
-                <div className='sm:text-4xl text-3xl font-semibold text-white'>
+                <div className='sm:text-4xl text-3xl font-semibold text-white-black'>
                     {Number}
                 </div>
             </div>

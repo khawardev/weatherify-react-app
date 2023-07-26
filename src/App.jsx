@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 
-import './App.css'
+import './App.scss'
 import Navbar from './components/navbar/Navbar'
 import { FaHeart } from 'react-icons/fa';
 
@@ -18,11 +18,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 function App() {
 
 
-  const [theme, setTheme] = useState("dark");
-
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  };
+  const {theme, setTheme} = useContext(Context);
 
 
   const { DateEndpoint, setDateEndpoint } = useContext(Context);
@@ -55,9 +51,9 @@ function App() {
     return (
 
       <>
-        <div className='mt-10 mb-5  w-11/12 m-auto flex items-center'>
+        <div className='mt-10 pb-5  w-11/12 m-auto flex items-center'>
           <hr className='hr-border w-full sm:block  hidden ' />
-          <p className='w-full font-bold text-1xl italic flex items-center justify-center text-white' >
+          <p className='w-full font-bold text-1xl italic flex items-center justify-center text-white-black'  >
             Made with <span className='mx-2'><FaHeart color='#b5a1e5' size={15} /></span> by Khawar Sultan
           </p>
           <hr className='hr-border  w-full sm:block  hidden' />
@@ -69,17 +65,19 @@ function App() {
 
   return (
     <>
+      <div className={` ${theme}`}>
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
 
-      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <Navbar />
+          <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} loading={loading} />
+          <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
+          <DayForcast DayForcast={data?.DayForcastresponseResponseData?.hour} />
+          {footer()}
 
+        </SkeletonTheme>
+        
+      </div>
 
-        <Navbar />
-        <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} loading={loading} />
-        <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
-        <DayForcast DayForcast={data?.DayForcastresponseResponseData?.hour} />
-        {footer()}
-
-      </SkeletonTheme>
     </>
 
   )

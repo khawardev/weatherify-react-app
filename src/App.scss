@@ -1,0 +1,44 @@
+@import "./mixins.scss";
+.Dark_mode {
+  --text-dark-black: rgb(0, 0, 0);
+  --text-dark-white: white;
+  --background-dark: #131215;
+  --input-dark-color: #1c1c1e;
+  --input-darker-color: #1a191c;
+  --button-color: #b5a1e5;
+  background-color: var(--background-dark);
+}
+.Light_mode {
+  --text-dark-black: rgb(0, 0, 0);
+  --text-dark-white: black;
+}
+
+.text-white-black {
+  color: var(--text-dark-white);
+}
+body {
+  --tw-text-opacity: 1;
+  color: #6e6e70;
+}
+.sidebar {
+  background-color: var(--input-dark-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.highlights-sidebar {
+  @include md {
+    background-color: var(--input-dark-color);
+    box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+.sidebar-darker {
+  background-color: var(--input-darker-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+}
+
+.hr-border {
+  border: 1px solid #6e6e70;
+}

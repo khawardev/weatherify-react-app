@@ -15,7 +15,7 @@ const HumpressuresCard = ({ Text, Icon, Number, power }) => {
                 <div>
                     <p className=' mb-8 font-semibold '>{Text}</p>
                 </div>
-                <div className="flex text-start justify-between text-white  items-center sm:mb-1">
+                <div className="flex text-start justify-between text-white-black  items-center sm:mb-1">
                     <div className='text-6xl  sm:mb-0 mb-4 justify-center flex'>
                         {icon}
                     </div>

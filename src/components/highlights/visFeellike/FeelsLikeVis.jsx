@@ -16,7 +16,7 @@ const FeelsLikeVis = ({ Name, Icon, Number, power, size }) => {
                 <div>
                     <p className='sm:mb-12 mb-7 font-semibold '>{Name}</p>
                 </div>
-                <div className="sm:flex sm:text-start text-center justify-between text-white  items-center ">
+                <div className="sm:flex sm:text-start text-center justify-between text-white-black  items-center ">
                     <div className='sm:my-0  my-8 justify-center flex' style={{ fontSize: `${size}rem` }}>
                         {icon}
                     </div>

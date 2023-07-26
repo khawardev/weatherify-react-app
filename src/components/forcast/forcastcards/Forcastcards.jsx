@@ -92,11 +92,11 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                             {ForcastData?.map((ForcastData, index) => (
 
                                 <div key={index} className="sidebar rounded-2xl p-5 text-center">
-                                    <p className="font-semibold text-white">{daysOfWeek[index]}</p>
+                                    <p className="font-semibold text-white-black">{daysOfWeek[index]}</p>
                                     <div className='flex justify-center my-[1.58rem]'>
                                         {ForcastData?.day?.condition?.text === 'Sunny' ? <img className='sm:w-18 ' src={Sunny} alt="" /> : <img className='sm:w-18 ' src={ForcastData?.day?.condition?.icon} alt="" />}
                                     </div>
-                                    <p className='rounded-full w-3/5 mx-auto text-white' style={{ fontSize: '14px' }}>
+                                    <p className='rounded-full w-3/5 mx-auto text-white-black' style={{ fontSize: '14px' }}>
                                         {ForcastData?.day?.avgtemp_c === 'Thundery outbreaks possible' ? 'Thundery' : ForcastData?.day?.avgtemp_c.toFixed(0)}°C
                                     </p>
                                     <p className='w-full' style={{ fontSize: '14px' }}>
@@ -120,11 +120,11 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                     {Dayapi()?.map((data) => (
 
                         <div key={data?.time_epoch} className="sidebar rounded-2xl p-5 text-center  w-full min-w-[157px]">
-                            <p className="font-semibold text-white">{HandleDay(data?.time_epoch)}</p>
+                            <p className="font-semibold text-white-black">{HandleDay(data?.time_epoch)}</p>
                             <div className="flex justify-center my-5">
                                 {data?.condition?.text === 'Clear' ? <img className='w-24 ' src={data?.condition?.icon} alt="" /> : <img className='sm:w-18 my-4' src={data?.condition?.icon} alt="" />}
                             </div>
-                            <p className="rounded-full w-3/5 mx-auto text-white" style={{ fontSize: '14px' }}>
+                            <p className="rounded-full w-3/5 mx-auto text-white-black" style={{ fontSize: '14px' }}>
                                 {data?.temp_c}°C
                             </p>
                         </div>
@@ -139,18 +139,18 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                 <>
                     {Dayapi()?.map((data, index) => (
                         <div key={index} className="sidebar rounded-2xl p-5 text-center w-full min-w-[157px] ">
-                            <p className="font-semibold text-white">{HandleDay(data?.time_epoch)}</p>
+                            <p className="font-semibold text-white-black">{HandleDay(data?.time_epoch)}</p>
                             <div className='flex justify-center my-12'>
                                 <FaLocationArrow size={33} style={{ transform: `rotate(${index * 45}deg)`, color: '#2298F1' }} />
                             </div>
-                            <p className='rounded-full w-3/5 mx-auto text-white' style={{ fontSize: '14px' }}>
+                            <p className='rounded-full w-3/5 mx-auto text-white-black' style={{ fontSize: '14px' }}>
                                 {data?.wind_kph.toFixed(0)} km/h
                             </p>
                         </div>
                     ))}
 
                 </>
-                
+
             }
 
 

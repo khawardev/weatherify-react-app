@@ -5,16 +5,20 @@
 import { createContext, useEffect } from "react";
 import { useState } from "react"
 export const Context = createContext();
-
+// export const ThemeContext = createContext('Dark_mode');
 const AppContext = ({ children }) => {
+
+    const [theme, setTheme] = useState('Dark_mode');
+
+
     const [islocation, seislocation] = useState(false)
 
     const [lat, setlat] = useState(null);
     const [lon, setlon] = useState(null);
     const [Text, setText] = useState('');
-    
+
     const [isget, Setisget] = useState(false)
-    
+
     const [utcEpoch, setutcEpoch] = useState();
     const [DateEndpoint, setDateEndpoint] = useState();
     const [localDate, setlocalDate] = useState();
@@ -36,7 +40,7 @@ const AppContext = ({ children }) => {
         setformattedDate(convertLocalDateToCustomFormat(localDate));
         TimeZone && setTimedata(new Date()?.toLocaleString("en-US", { timeZone: `${TimeZone}`, timeStyle: 'short', hourCycle: 'h12' }))
 
-    }, [utcEpoch, localDate,TimeZone]);
+    }, [utcEpoch, localDate, TimeZone]);
 
 
 
@@ -82,7 +86,8 @@ const AppContext = ({ children }) => {
                 lon, setlon,
                 Text, setText,
                 isget, Setisget,
-                islocation, seislocation
+                islocation, seislocation,
+                theme, setTheme
             }}>
             {children}
         </Context.Provider>
