@@ -18,9 +18,9 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 function App() {
 
 
-  const {theme, setTheme} = useContext(Context);
-  const {baseColor, setbaseColor} = useContext(Context);
-  const {highlightColor, sethighlightColor} = useContext(Context);
+  const { theme, setTheme } = useContext(Context);
+  const { baseColor, setbaseColor } = useContext(Context);
+  const { highlightColor, sethighlightColor } = useContext(Context);
 
   const { DateEndpoint, setDateEndpoint } = useContext(Context);
   const { TimeZone, setTimeZone } = useContext(Context);
@@ -63,7 +63,8 @@ function App() {
 
     )
   }
-
+  
+  console.log("🚀 ~ file: App.jsx:74 ~ App ~ data?.ForcastresponseResponseData:", data?.ForcastresponseResponseData)
   return (
     <>
       <div className={` ${theme}`}>
@@ -76,7 +77,7 @@ function App() {
           {footer()}
 
         </SkeletonTheme>
-        
+
       </div>
 
     </>
