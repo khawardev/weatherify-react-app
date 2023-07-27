@@ -64,7 +64,6 @@ function App() {
     )
   }
   
-  console.log("🚀 ~ file: App.jsx:74 ~ App ~ data?.ForcastresponseResponseData:", data?.ForcastresponseResponseData)
   return (
     <>
       <div className={` ${theme}`}>

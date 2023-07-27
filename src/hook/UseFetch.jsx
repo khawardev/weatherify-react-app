@@ -7,11 +7,7 @@ const useFetch = (location, DateEndpoint) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
-    // useEffect(() => {
-    //     lat = null;
-    //     lon = null;
-    // }, [location]);
-
+  
     useEffect(() => {
         setLoading("loading...");
         setData(null);

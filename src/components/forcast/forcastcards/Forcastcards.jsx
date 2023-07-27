@@ -1,25 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { WiCloud, WiMoonFull, WiDaySunny, WiThunderstorm, WiDayRainMix, WiDaySunnyOvercast, WiNightThunderstorm, WiNightRain } from 'react-icons/wi';
-import { HiMoon } from 'react-icons/hi';
 import { FaLocationArrow } from 'react-icons/fa';
-import { IoPartlySunnyOutline, IoRainyOutline } from 'react-icons/io5';
-import { BsCloudFog, BsCloudRainHeavy, BsCloudLightningRain } from 'react-icons/bs';
-import { PiCloudRain } from 'react-icons/pi';
-import { FiCloudRain } from 'react-icons/fi';
-import { BiCloudLightRain } from 'react-icons/bi';
-import { RiHeavyShowersLine, RiMoonClearLine } from 'react-icons/ri';
 import { useState } from 'react';
-import { useEffect, useContext } from 'react';
-import { Context } from '../../../context/AppContext';
-import Skeleton from 'react-loading-skeleton';
-
+import { useEffect } from 'react';
 import Sunny from '../../../assets/113.png';
 import ForcastCardSkeleton from './ForcastCardSkeleton';
 
 
 const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, LocationToday }) => {
+
+    
     const Dayapi = () => {
         function extractObjectsWithGap(apiResponse, gap) {
             const result = [];
@@ -34,25 +25,12 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
         return (extractedObjects)
     }
 
-
-
-
-
-
-
     const [dateEpochs, setDateEpochs] = useState([]);
-    const [DayDateEpochs, setDayDateEpochs] = useState([]);
-    // const [avgtemp_c, setavgtemp_c] = useState([]);
     useEffect(() => {
-        // setavgtemp_c(temp)
         const epochs = ForcastData?.map((ForcastData) => ForcastData?.date_epoch) || [];
-        const dayEpoach = DayForcast?.map((DayForcast) => DayForcast?.time_epoch) || [];
-        const temp = ForcastData?.map((ForcastData) => ForcastData?.day?.condition?.text) || [];
         setDateEpochs(epochs);
-        setDayDateEpochs(dayEpoach)
     }, [ForcastData]);
 
-    const daysOfTime = DayDateEpochs.map((DayDateEpochs) => getDayNameFromUTCEpoch(DayDateEpochs));
     const daysOfWeek = dateEpochs.map((dateEpochs) => getDayNameFromUTCEpoch(dateEpochs));
     function getDayNameFromUTCEpoch(utcEpoch) {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -79,7 +57,6 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
 
     }
 
-    const rotationAngles = Array.from({ length: 8 }, (_, index) => index * 45);
 
 
     return (
@@ -106,7 +83,7 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                             ))}
                         </>
 
-                        : <ForcastCardSkeleton card={6} />}
+                        : <ForcastCardSkeleton card={2} />}
                 </>
             }
 

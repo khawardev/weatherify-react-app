@@ -3,12 +3,11 @@
 /* eslint-disable react/no-unknown-property */
 import './navbar.scss'
 import { FiSearch } from 'react-icons/fi';
-import { BiSearch, BiX } from 'react-icons/bi';
+import { BiX } from 'react-icons/bi';
 import { TbCurrentLocation } from 'react-icons/tb';
 import { useEffect, useContext, useState, useRef } from 'react';
 import { Context } from '../../context/AppContext';
 import { BiSolidHandDown } from 'react-icons/bi';
-import axios from 'axios';
 import { BsSun } from 'react-icons/bs';
 import { FaMoon } from 'react-icons/fa6';
 const Navbar = () => {
@@ -17,23 +16,12 @@ const Navbar = () => {
     const { lon, setlon } = useContext(Context);
     const inputRef = useRef(null);
 
-    const { DateEndpoint, setDateEndpoint } = useContext(Context);
     const { isget, Setisget } = useContext(Context);
     const { islocation, seislocation } = useContext(Context);
 
 
 
-    const fetchDataCorrdinates = async () => {
-        try {
-            const Corrdinates = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
-            const data = await Corrdinates.json();
-            console.log("🚀 ~ file: Navbar.jsx:29 ~ fetchDataCorrdinates ~ data:", data)
-            // return data;
-        } catch (error) {
-            console.log("Error in fetching API ....");
-            throw error;
-        }
-    };
+    
 
 
 
@@ -50,9 +38,6 @@ const Navbar = () => {
 
     useEffect(() => {
         Setisget(false)
-        lat && fetchDataCorrdinates()
-        // lat == null ? seislocation(false) : seislocation(true)
-        // lat && seislocation(true)
     }, [lat]);
 
     const [logocolor, setLogocolor] = useState('#ffffff');
@@ -160,19 +145,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-
-
-
-
                     <div className=' flex items-center justify-center gap-2'>
-
-                        {/* <button className='sm:flex hidden  items-center justify-center p-3  rounded-full toggle-button' >
-                            <FaMoon size={20} color='white' />
-                            <BsSun size={20} color='white' />
-                        </button> */}
-
-
-
                         <button
                             className='flex  items-center justify-center p-3 rounded-full toggle-button'
                             onClick={toggleIcon}
@@ -185,11 +158,6 @@ const Navbar = () => {
 
                             )}
                         </button>
-
-
-
-
-
 
 
                         <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>

@@ -33,9 +33,6 @@ const AppContext = ({ children }) => {
     // Realtime Time Data
 
 
-
-
-
     useEffect(() => {
         setlocalDate(convertUTCEpochToLocalDate(utcEpoch));
         setdayName(getDayNameFromUTCEpoch(utcEpoch));
@@ -68,8 +65,6 @@ const AppContext = ({ children }) => {
         const dayName = daysOfWeek[dayOfWeekIndex];
         return dayName;
     }
-
-
 
 
 

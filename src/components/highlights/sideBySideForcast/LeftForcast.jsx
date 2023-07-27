@@ -5,7 +5,6 @@ import { TbWind } from 'react-icons/tb';
 import QualityAirCard from '../airQualityCard/QualityAirCard';
 import HumPressuresCard from '../humPresCard/HumPressuresCard';
 
-
 const LeftForcast = ({ data }) => {
 
     const airQualityData = data?.current?.air_quality;
@@ -46,10 +45,6 @@ const LeftForcast = ({ data }) => {
         setIndex(newIndex);
         setIndexclass(newIndexClass);
     }, [AQI]);
-
-
-
-
 
 
     return (

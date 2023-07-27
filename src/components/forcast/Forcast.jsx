@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import Forcastcards from './forcastcards/Forcastcards';
-import './forcast.scss';
-import ForcastCardSkeleton from './forcastcards/ForcastCardSkeleton';
 import ForcastSkeleton from './ForcastSkeleton';
 const Forcast = ({ grid, text, AvailaibleToday, ForcastData, DayForcast, LocationToday }) => {
 
