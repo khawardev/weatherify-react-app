@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import LeftForcast from './sideBySideForcast/LeftForcast';
 import RightForcast from './sideBySideForcast/RightForcast';
 import Skeleton from 'react-loading-skeleton';
-
+import { Context } from '../../context/AppContext';
+import { useContext } from 'react';
 const Highlights = ({ data, astronomyData }) => {
+
     return (
         <>
             <div className="w-11/12 mx-auto sm:my-10 my-5 ">

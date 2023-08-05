@@ -86,7 +86,8 @@ const AppContext = ({ children }) => {
                 islocation, seislocation,
                 theme, setTheme,
                 baseColor, setbaseColor,
-                highlightColor, sethighlightColor
+                highlightColor, sethighlightColor,
+           
             }}>
             {children}
         </Context.Provider>

@@ -2,6 +2,7 @@
 import Current from '../Current/Current'
 import Forcast from '../forcast/Forcast';
 const ForcastCurrent = ({data,ForcastData,loading}) => {
+  
   const days = ForcastData?.length;
   return (
     <>

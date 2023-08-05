@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import './navbar.scss'
+import { memo, React, useCallback, useMemo } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { BiX } from 'react-icons/bi';
 import { TbCurrentLocation } from 'react-icons/tb';
@@ -20,19 +21,12 @@ const Navbar = () => {
     const { islocation, seislocation } = useContext(Context);
 
 
-
-    
-
-
-
     function getLocation() {
         lat == null ? Setisget(true) : Setisget(false)
         navigator.geolocation.getCurrentPosition(function (location) {
             setlat(location.coords.latitude);
             setlon(location.coords.longitude);
         });
-
-
 
     }
 
@@ -64,19 +58,21 @@ const Navbar = () => {
     };
 
     const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);
-    const {theme, setTheme} = useContext(Context);
-    const {baseColor, setbaseColor} = useContext(Context);
-    const {highlightColor, sethighlightColor} = useContext(Context);
+    const { theme, setTheme } = useContext(Context);
+    const { baseColor, setbaseColor } = useContext(Context);
+    const { highlightColor, sethighlightColor } = useContext(Context);
 
 
 
-    const toggleIcon = () => {
+    function togglemode() {
+        console.log("toggleIcon");
         setTheme(theme === "Dark_mode" ? "Light_mode" : "Dark_mode");
         setIsMoonIconVisible((prevIsMoonIconVisible) => !prevIsMoonIconVisible);
-        setLogocolor(logocolor === '#ffffff' ? '#000000': '#ffffff')
-        setbaseColor(baseColor === '#202020' ? 'rgb(200, 200, 200)': '#202020')
-        sethighlightColor(highlightColor === '#444' ? 'rgb(225, 225, 225)': '#444')
-    };
+        setLogocolor(logocolor === '#ffffff' ? '#000000' : '#ffffff')
+        setbaseColor(baseColor === '#202020' ? 'rgb(200, 200, 200)' : '#202020')
+        sethighlightColor(highlightColor === '#444' ? 'rgb(225, 225, 225)' : '#444')
+    }
+
 
 
     return (
@@ -111,7 +107,7 @@ const Navbar = () => {
 
                         </div>
                         <div>
-                            <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor} `}} onClick={handleSearchClick} />
+                            <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor} ` }} onClick={handleSearchClick} />
                         </div>
                     </div>
                     <div className='md:hidden flex  items-center search-input-header-div h-[2.65rem]'>
@@ -139,7 +135,7 @@ const Navbar = () => {
                                 <BiX size={28} style={{ color: `${logocolor}` }} onClick={handleSearchClick} />
                             ) : (
 
-                                <FiSearch size={22} style={{ strokeWidth: '2', color:  `${logocolor}` }} onClick={handleSearchClick} />
+                                <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor}` }} onClick={handleSearchClick} />
 
                             )}
                         </div>
@@ -148,7 +144,7 @@ const Navbar = () => {
                     <div className=' flex items-center justify-center gap-2'>
                         <button
                             className='flex  items-center justify-center p-3 rounded-full toggle-button'
-                            onClick={toggleIcon}
+                            onClick={togglemode} //togglemode
                         >
                             {isMoonIconVisible ? (
                                 <BsSun size={20} color={logocolor} />
