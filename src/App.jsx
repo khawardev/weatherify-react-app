@@ -68,7 +68,6 @@ function App() {
     <>
       <div className={` ${theme}`}>
         <SkeletonTheme baseColor={`${baseColor}`} highlightColor={`${highlightColor}`}>
-
           <Navbar />
           <ForcastCurrent data={data?.currentResponseData} ForcastData={data?.ForcastresponseResponseData} loading={loading} />
           <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />

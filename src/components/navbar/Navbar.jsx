@@ -27,7 +27,6 @@ const Navbar = () => {
             setlat(location.coords.latitude);
             setlon(location.coords.longitude);
         });
-
     }
 
     useEffect(() => {
