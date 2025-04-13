@@ -77,7 +77,7 @@ const Navbar = () => {
     return (
         <>
 
-            <div className='flex items-center justify-between  mx-auto sm:pb-10  pt-6 pb-6  w-11/12 mb-5' >
+            <div className='flex items-center justify-between w-11/12 mx-auto sm:pb-10  pt-6 pb-6   mb-5' >
                 <div className=' w-1/3'>
 
                     <div className='flex items-center text-white-black'>
@@ -92,12 +92,12 @@ const Navbar = () => {
 
                 <div className='flex  lg:justify-between justify-end lg:gap-0 gap-2 w-2/3   '>
 
-                    <div className='md:flex hidden items-center search-input-header-div '>
+                    <div className='md:flex hidden items-center search-input-header-div border '>
                         <div >
                             <input
                                 type="text"
                                 placeholder="Enter the Location"
-                                className="search-input-header px-3 font-medium"
+                                className="search-input-header  px-3 font-medium"
                                 value={query}
                                 onChange={(event) => setquery(event.target.value)}
                                 onKeyUp={searchQueryHandler}
@@ -109,7 +109,7 @@ const Navbar = () => {
                             <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor} ` }} onClick={handleSearchClick} />
                         </div>
                     </div>
-                    <div className='md:hidden flex  items-center search-input-header-div h-[2.65rem]'>
+                    <div className='md:hidden flex  items-center search-input-header-div h-[2.65rem] border'>
                         <div >
                             {searchVisible && (
                                 <>
@@ -142,7 +142,7 @@ const Navbar = () => {
 
                     <div className=' flex items-center justify-center gap-2'>
                         <button
-                            className='flex  items-center justify-center p-3 rounded-full toggle-button'
+                            className='flex  items-center border justify-center p-3 rounded-full toggle-button'
                             onClick={togglemode} //togglemode
                         >
                             {isMoonIconVisible ? (
@@ -155,7 +155,7 @@ const Navbar = () => {
                         </button>
 
 
-                        <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
+                        {/* <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
                             <span> <TbCurrentLocation size={20} style={{ strokeWidth: '2' }} /></span>
                             <span className='button-text'>
                                 {isget ? (
@@ -182,7 +182,7 @@ const Navbar = () => {
                                     </>
                                 )
                             }
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

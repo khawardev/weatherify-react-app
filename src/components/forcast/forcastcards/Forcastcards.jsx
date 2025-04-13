@@ -68,7 +68,7 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                         <>
                             {ForcastData?.map((ForcastData, index) => (
 
-                                <div key={index} className="sidebar rounded-2xl p-5 text-center">
+                                <div key={index} className="sidebar border rounded-3xl p-5 text-center">
                                     <p className="font-semibold text-white-black">{daysOfWeek[index]}</p>
                                     <div className='flex justify-center my-[1.58rem]'>
                                         {ForcastData?.day?.condition?.text === 'Sunny' ? <img className='sm:w-18 ' src={Sunny} alt="" /> : <img className='sm:w-18 ' src={ForcastData?.day?.condition?.icon} alt="" />}
@@ -96,7 +96,7 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
                 <>
                     {Dayapi()?.map((data) => (
 
-                        <div key={data?.time_epoch} className="sidebar rounded-2xl p-5 text-center  w-full min-w-[157px]">
+                        <div key={data?.time_epoch} className="sidebar border rounded-3xl p-5 text-center  w-full min-w-[157px]">
                             <p className="font-semibold text-white-black">{HandleDay(data?.time_epoch)}</p>
                             <div className="flex justify-center my-5">
                                 {data?.condition?.text === 'Clear' ? <img className='w-24 ' src={data?.condition?.icon} alt="" /> : <img className='sm:w-18 my-4' src={data?.condition?.icon} alt="" />}
@@ -115,7 +115,7 @@ const Forcastcards = ({ forcats, ForcastData, AvailaibleToday, DayForcast, Locat
 
                 <>
                     {Dayapi()?.map((data, index) => (
-                        <div key={index} className="sidebar rounded-2xl p-5 text-center w-full min-w-[157px] ">
+                        <div key={index} className="sidebar border rounded-3xl p-5 text-center w-full min-w-[157px] ">
                             <p className="font-semibold text-white-black">{HandleDay(data?.time_epoch)}</p>
                             <div className='flex justify-center my-12'>
                                 <FaLocationArrow size={33} style={{ transform: `rotate(${index * 45}deg)`, color: '#2298F1' }} />

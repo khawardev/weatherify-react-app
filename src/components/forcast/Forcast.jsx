@@ -6,8 +6,7 @@ const Forcast = ({ grid, text, AvailaibleToday, ForcastData, DayForcast, Locatio
 
     return (
         <div >
-            <div className=' my-5 '>
-
+            <div className='md:mt-0 mt-6' >
                 {AvailaibleToday ? (
                     <>
                         <div className='flex justify-between'>

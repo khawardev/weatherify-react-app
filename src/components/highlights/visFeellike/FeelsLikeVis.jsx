@@ -2,17 +2,12 @@
 import { CiTempHigh } from 'react-icons/ci';
 import { FaEyeLowVision } from 'react-icons/fa6';
 const FeelsLikeVis = ({ Name, Icon, Number, power, size }) => {
-
     const Usedpower = power ? 'km' : '°C';
     const UsedIcon = Icon ? FaEyeLowVision : CiTempHigh;
     const icon = <UsedIcon />;
     return (
         <>
-
-
-
-
-            <div className="w-full p-5 sm:text-start text-center  sidebar-darker rounded-2xl">
+            <div className="w-full p-5 sm:text-start text-center  sidebar-darker border rounded-3xl">
                 <div>
                     <p className='sm:mb-12 mb-7 font-semibold '>{Name}</p>
                 </div>
@@ -25,9 +20,6 @@ const FeelsLikeVis = ({ Name, Icon, Number, power, size }) => {
                     </div>
                 </div>
             </div>
-
-
-
         </>
     )
 }

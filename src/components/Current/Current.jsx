@@ -30,11 +30,11 @@ const Current = ({ data }) => {
 
         <>
 
-            <div className='my-5 '>
+            <div className=' '>
                 <p className=' text-white-black  px-1 text-xl font-semibold mb-5'>Current Weather</p>
                 {data ?
-                    <div className="sidebar rounded-2xl px-5 py-14 " >
-                        <p className=" text-xl  font-semibold mb-3 text-white-black"> Now </p>
+                    <div className="sidebar border  rounded-3xl px-5 py-10 " >
+                        <p className=" text-xl  font-semibold  text-white-black"> Now </p>
                         <div className='flex items-center justify-between '>
                             <div>
                                 <p className="text-white-black font-semibold sm:text-6xl text-5xl ">
@@ -53,7 +53,7 @@ const Current = ({ data }) => {
                         <p className='font-semibold'>{data?.current?.condition?.text}</p>
 
                         <hr className="hr-border  my-5" />
-                        <div className='flex gap-2 items-center mb-4'>
+                        <div className='flex gap-2 items-center mb-2'>
                             <div className='text-white-black mr-1'>
                                 <BiSolidTimeFive size={20} />
                             </div>
@@ -66,7 +66,7 @@ const Current = ({ data }) => {
                             }
                         </div>
 
-                        <div className='flex gap-3 items-center mb-4'>
+                        <div className='flex gap-3 items-center mb-2'>
                             <div className='text-white-black '>
                                 <CgCalendarToday size={20} />
                             </div>

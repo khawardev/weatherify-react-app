@@ -5,16 +5,12 @@
   background-color: transparent;
   color: var(--text-dark-white);
   outline: 0;
-  border: 0;
-
   animation: mobileSearchFade 0.3s ease-in-out forwards;
   color: var(--text-dark-white);
-  // display: none;
   @include lg {
     width: 400px;
     display: block;
   }
-
 }
 
 .search-input-header:focus {
@@ -27,7 +23,6 @@
   border-radius: 30px;
   padding: 10px 10px;
   background-color: var(--input-dark-color);
-  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
   @include lg {
     padding: 10px 16px;
   }
@@ -39,7 +34,7 @@
   background-color: #b5a1e5;
   border-radius: 30px;
   color: var(--text-dark-black);
- transition: 0.3s;
+  transition: 0.3s;
 
   @include lg {
     padding: 9px 16px;
@@ -53,7 +48,7 @@
 }
 .button:hover {
   background-color: #a491d1;
- transition: 0.3s;
+  transition: 0.3s;
 }
 .right-container {
   display: flex;

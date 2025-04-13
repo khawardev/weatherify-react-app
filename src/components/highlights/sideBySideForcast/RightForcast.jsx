@@ -7,7 +7,7 @@ const RightForcast = ({data, astronomyData}) => {
 
 
             <div className='w-full sm:my-10 my-5'>
-                <div className=" sidebar-darker rounded-2xl  p-6">
+                <div className=" sidebar-darker border rounded-3xl  p-6">
                     <p className='mb-4 font-semibold'>Sunrise & Sunset</p>
                     <div className=" sm:flex  flex-none gap-10 ">
                         <TimeRiseCard Icon={'BsSun'} Day={'Sunrise'} Time={astronomyData?.sunrise} />

@@ -85,7 +85,7 @@ const LeftForcast = ({ data }) => {
                 <>
                     {
                         AQISkeleton && (
-                            <section className="sidebar-darker rounded-2xl p-6">
+                            <section className="sidebar-darker border rounded-3xl p-6">
                                 <div className='flex justify-between'>
                                     <p className='mb-4 font-semibold'>Air Quality Index</p>
                                     <div>

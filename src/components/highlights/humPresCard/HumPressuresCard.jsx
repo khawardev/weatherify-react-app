@@ -11,7 +11,7 @@ const HumpressuresCard = ({ Text, Icon, Number, power }) => {
 
     return (
         <>
-            <div className=" w-full  p-5 text-start sm:my-0 my-5  sidebar-darker rounded-2xl">
+            <div className=" w-full  p-5 text-start sm:my-0 my-5  sidebar-darker border rounded-3xl">
                 <div>
                     <p className=' mb-8 font-semibold '>{Text}</p>
                 </div>

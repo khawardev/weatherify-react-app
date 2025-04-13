@@ -44,21 +44,53 @@ function App() {
   }, [data, Text, lat]);
 
 
-  
+
 
 
 
   const footer = useCallback(() => {
     return (
       <>
-
-        <div className='mt-10 pb-5  w-11/12 m-auto flex items-center'>
-          <hr className='hr-border w-full sm:block  hidden ' />
-          <p className='w-full font-bold text-1xl italic flex items-center justify-center text-white-black'>
-            Made with <span className='mx-2'><FaHeart color='#b5a1e5' size={15} /></span> by Khawar Sultan
-          </p>
-          <hr className='hr-border  w-full sm:block  hidden' />
+        <div className="md:flex items-center whitespace-nowrap md:space-x-7 pt-10 pb-4 w-11/12 mx-auto">
+          <div className="flex items-center md:flex-row-reverse gap-2 md:w-full">
+            <div className="select-none flex items-center gap-2">
+              <p className="sohne_bold font-bold ">
+                <span className="text-muted-foreground"></span>
+                <a
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/khawardev/weatherify-react-app"
+                >
+                  Github
+                </a>
+              </p>
+              <img
+                className="sm:block hidden rounded-full"
+                src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
+                alt="GitHub Logo"
+                width={25}
+                height={100}
+              />
+            </div>
+            <div className="select-none flex items-center">
+              <p className="sohne_bold font-bold">
+                <span className="text-muted-foreground">By</span>{" "}
+                <a
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://khawarsultan.vercel.app"
+                >
+                  Khawar Sultan
+                </a>
+              </p>
+              <img  src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />
+            </div>
+          </div>
         </div>
+
+
       </>
     );
   }, []);
