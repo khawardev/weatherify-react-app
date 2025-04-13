@@ -51,7 +51,7 @@ function App() {
   const footer = useCallback(() => {
     return (
       <>
-        <div className="md:flex items-center whitespace-nowrap md:space-x-7 pt-10 pb-4 w-11/12 mx-auto">
+        <div className="md:flex items-center whitespace-nowrap md:space-x-7 pt-10 pb-5 w-11/12 mx-auto">
           <div className="flex items-center md:flex-row-reverse gap-2 md:w-full">
             <div className="select-none flex items-center gap-2">
               <p className="sohne_bold font-bold ">
