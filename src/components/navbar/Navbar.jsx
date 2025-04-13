@@ -124,8 +124,6 @@ const Navbar = () => {
                                         autoFocus={true}
                                     />
                                 </>
-
-
                             )}
 
                         </div>
