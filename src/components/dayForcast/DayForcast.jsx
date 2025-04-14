@@ -5,7 +5,7 @@ const DayForcast = ({ DayForcast }) => {
 
     return (
         <>
-            <div className="w-11/12 mx-auto">
+            <div className="w-11/12 mx-auto pb-10">
                 <Forcast DayForcast={DayForcast} text={'Today at'} AvailaibleToday={true} LocationToday={true} />
             </div>
 

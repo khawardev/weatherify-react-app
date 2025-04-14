@@ -11,6 +11,7 @@ import { Context } from '../../context/AppContext';
 import { BiSolidHandDown } from 'react-icons/bi';
 import { BsSun } from 'react-icons/bs';
 import { FaMoon } from 'react-icons/fa6';
+import { Footer } from '../../App';
 const Navbar = () => {
 
     const { lat, setlat } = useContext(Context);
@@ -75,23 +76,22 @@ const Navbar = () => {
 
 
     return (
-        <>
+        <div className='sm:pb-10  pt-6 pb-6   w-11/12 mx-auto'>
 
-            <div className='flex items-center justify-between w-11/12 mx-auto sm:pb-10  pt-6 pb-6   mb-5' >
+            <div className='flex items-center justify-between  mb-2' >
                 <div className=' w-1/3'>
 
                     <div className='flex items-center text-white-black'>
                         <div >
                             {Weathersvg}
                         </div>
-                        <div className='text-2xl font-bold text-white-black'>
+                        <div className='text-2xl font-bold tracking-tighter text-white-black'>
                             Weatherify
                         </div>
                     </div>
                 </div>
 
                 <div className='flex  lg:justify-between justify-end lg:gap-0 gap-2 w-2/3   '>
-
                     <div className='md:flex hidden items-center search-input-header-div border '>
                         <div >
                             <input
@@ -109,48 +109,49 @@ const Navbar = () => {
                             <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor} ` }} onClick={handleSearchClick} />
                         </div>
                     </div>
-                    <div className='md:hidden flex  items-center search-input-header-div h-[2.65rem] border'>
-                        <div >
-                            {searchVisible && (
-                                <>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter the Location"
-                                        className="search-input-header px-3 font-medium"
-                                        value={query}
-                                        onChange={(event) => setquery(event.target.value)}
-                                        onKeyUp={searchQueryHandler}
-                                        ref={inputRef}
-                                        autoFocus={true}
-                                    />
-                                </>
-                            )}
 
-                        </div>
-                        <div>
-                            {searchVisible ? (
-                                <BiX size={28} style={{ color: `${logocolor}` }} onClick={handleSearchClick} />
-                            ) : (
-
-                                <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor}` }} onClick={handleSearchClick} />
-
-                            )}
-                        </div>
-                    </div>
-
-                    <div className=' flex items-center justify-center gap-2'>
+                    <div className=' flex items-center justify-center gap-1'>
                         <button
-                            className='flex  items-center border justify-center p-3 rounded-full toggle-button'
+                            className='flex  items-center  justify-center p-[11px] rounded-xl toggle-button'
                             onClick={togglemode} //togglemode
                         >
                             {isMoonIconVisible ? (
-                                <BsSun size={20} color={logocolor} />
+                                <BsSun size={16} color={logocolor} />
 
                             ) : (
-                                <FaMoon size={20} color={logocolor} />
+                                <FaMoon size={16} color={logocolor} />
 
                             )}
                         </button>
+                        <a
+                            href="https://khawarsultan.vercel.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-1 rounded-xl toggle-button"
+                        >
+                            <img
+                                className='mt-[2px]'
+                                src="https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx"
+                                alt="Portfolio"
+                                width={28}
+                                height={100}
+                            />
+                        </a>
+                        <a
+                            href="https://github.com/khawardev/weatherify-react-app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-[9px]  toggle-button rounded-xl"
+                        >
+                            <img
+                                className="sm:block rounded-md"
+                                src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
+                                alt="GitHub Logo"
+                                width={20}
+                                height={100}
+                            />
+                        </a>
+
 
 
                         {/* <button onClick={lat === null ? getLocation : null} className='button flex   items-center gap-3  tracking-tight font-medium'>
@@ -184,8 +185,25 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <div className='md:hidden flex justify-between px-4  items-center search-input-header-div border '>
+                <div >
+                    <input
+                        type="text"
+                        placeholder="Enter the Location"
+                        className="search-input-header w-full   font-medium"
+                        value={query}
+                        onChange={(event) => setquery(event.target.value)}
+                        onKeyUp={searchQueryHandler}
+                        ref={inputRef}
+                    />
 
-        </>
+                </div>
+                <div>
+                    <FiSearch size={22} style={{ strokeWidth: '2', color: `${logocolor} ` }} onClick={handleSearchClick} />
+                </div>
+            </div>
+
+        </div>
     )
 }
 
