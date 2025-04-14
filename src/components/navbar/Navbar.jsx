@@ -2,16 +2,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import './navbar.scss'
-import { memo, React, useCallback, useMemo } from 'react';
+import { React } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { BiX } from 'react-icons/bi';
-import { TbCurrentLocation } from 'react-icons/tb';
 import { useEffect, useContext, useState, useRef } from 'react';
 import { Context } from '../../context/AppContext';
-import { BiSolidHandDown } from 'react-icons/bi';
 import { BsSun } from 'react-icons/bs';
 import { FaMoon } from 'react-icons/fa6';
-import { Footer } from '../../App';
 const Navbar = () => {
 
     const { lat, setlat } = useContext(Context);

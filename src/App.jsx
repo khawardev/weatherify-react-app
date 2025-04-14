@@ -4,12 +4,12 @@ import './App.scss'
 import Navbar from './components/navbar/Navbar'
 import Highlights from './components/highlights/Highlights';
 import DayForcast from './components/dayForcast/DayForcast';
-import { useEffect} from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useFetch from './hook/UseFetch';
 import ForcastCurrent from './components/forcastCurrent/ForcastCurrent';
 import { Context } from './context/AppContext';
 import { useContext, createContext } from 'react';
-import  { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 
 function App() {
@@ -43,6 +43,10 @@ function App() {
   }, [data, Text, lat]);
 
 
+
+
+
+
   return (
     <>
       <div className={` ${theme}`}>
@@ -52,6 +56,7 @@ function App() {
           <Highlights data={data?.currentResponseData} astronomyData={data?.astronomyResponseData} />
           <DayForcast DayForcast={data?.DayForcastresponseResponseData?.hour} />
         </SkeletonTheme>
+
       </div>
 
     </>
